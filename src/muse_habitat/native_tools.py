@@ -160,6 +160,10 @@ class NativeToolsPlanner(ZeroShotReactPlanner):
     def replan(self, instruction, observations, world_graph):
         if self._turns is None:
             self._turns = self._start()
+            self._turn = 0
+        episode = self.env_interface.env.env.env._env.current_episode
+        self.llm.traj_meta = {"episode_id": episode.episode_id, "agent": self._agents[0].uid, "turn": self._turn}
+        self._turn += 1
         if self.llm.llm_conf.get("tool_single_call", False):
             out = self._replan_single()
             if out is not None:

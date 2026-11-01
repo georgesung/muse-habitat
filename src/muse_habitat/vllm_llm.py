@@ -9,8 +9,13 @@ generated in two calls, as the model's chat template renders an assistant messag
 channel (unconstrained, up to `thinking.max_tokens`), then the answer channel with the grammar. vLLM's own
 "grammar after reasoning" cannot do this for Glimmer: its reasoning parser only ends reasoning at a tool channel, never
 at a `to=user` answer. Thinking is not kept in the planner's history, as chat clients drop earlier reasoning.
+
+Trajectory logging (for RL): with MUSE_TRAJ_DIR set, every completion call appends one JSON line to
+$MUSE_TRAJ_DIR/traj_<pid>.jsonl: `traj_meta` (set by the planner: episode, agent, turn), the prompt string, the
+generated text, vLLM's prompt and generated token ids, the sampled tokens' logprobs and the finish reason.
 """
 import json
+import os
 import time
 import urllib.request
 
@@ -26,6 +31,8 @@ class VLLMCompletion(BaseLLM):
         self.url = f"http://{conf.host}:{conf.port}/v1/completions"
         self.response = None
         self.calls = 0
+        self.traj_meta = {}
+        self.traj_dir = os.environ.get("MUSE_TRAJ_DIR")
 
     def _complete(self, prompt, max_tokens, stop, grammar=None, keep_special=False):
         gp = self.generation_params
@@ -35,10 +42,24 @@ class VLLMCompletion(BaseLLM):
             body["skip_special_tokens"] = False  # so special-token stop strings (<|eom|>) match
         if grammar is not None:
             body["structured_outputs"] = {"grammar": grammar}
+        if self.traj_dir:
+            body.update(return_token_ids=True, logprobs=0)
         req = urllib.request.Request(self.url, json.dumps(body).encode(), {"Content-Type": "application/json"})
         with urllib.request.urlopen(req, timeout=self.llm_conf.timeout) as r:
             out = json.loads(r.read())
-        return out["choices"][0]["text"], out["usage"]["completion_tokens"]
+        choice = out["choices"][0]
+        if self.traj_dir:
+            self._log(body, choice)
+        return choice["text"], out["usage"]["completion_tokens"]
+
+    def _log(self, body, choice):
+        rec = {**self.traj_meta, "time": time.time(), "model": body["model"], "temperature": body["temperature"],
+               "stop": body["stop"], "grammar": "structured_outputs" in body, "prompt": body["prompt"],
+               "text": choice["text"], "prompt_token_ids": choice.get("prompt_token_ids"),
+               "token_ids": choice.get("token_ids"), "logprobs": (choice.get("logprobs") or {}).get("token_logprobs"),
+               "finish_reason": choice.get("finish_reason"), "stop_reason": choice.get("stop_reason")}
+        with open(os.path.join(self.traj_dir, f"traj_{os.getpid()}.jsonl"), "a") as f:
+            f.write(json.dumps(rec) + "\n")
 
     def generate(self, prompt, stop=None, max_length=None, generation_args=None, **kwargs):
         if not isinstance(prompt, str):
