@@ -10,9 +10,11 @@
   server, point <run>/policy at it, unload adapters older than the last <keep>.
 - Logs: <run>/train_log.jsonl (one line per step), <run>/groups.jsonl (every completed group, trained or not).
 
-The vLLM server (scripts/glimmer_serve_lora.sh, with --max-lora-rank >= rank) must be up on <port>.
+The vLLM servers (scripts/glimmer_serve_lora.sh, with --max-lora-rank >= rank) must be up on <ports> (comma-separated;
+rollout process n uses port n mod len, adapters are loaded into all of them). Servers on another machine (ports
+forwarded here, scripts/tunnel.sh): --remote <host>:<dir> rsyncs each adapter to <dir>/<name> there before loading it.
 
-    CUDA_VISIBLE_DEVICES=<trainer gpu> envs/trl/bin/python -I scripts/grpo_run.py <name> --port 8021 \
+    CUDA_VISIBLE_DEVICES=<trainer gpu> envs/trl/bin/python -I scripts/grpo_run.py <name> --port 8021[,8022,...] \
         --rollout-gpus "0 1 1" [--samples 8 --shards 3 --episodes 300 --steps 20]
 """
 import argparse
@@ -20,6 +22,7 @@ import csv
 import json
 import os
 import random
+import shutil
 import signal
 import subprocess
 import time
@@ -36,11 +39,18 @@ from muse_habitat.models import GLIMMER as MODEL
 TARGETS = r".*language_model.*\.(self_attn\.(q_proj|k_proj|v_proj|o_proj)|mlp\.(gate_proj|up_proj|down_proj))"
 
 
-def post(port, path, body):
+def post(port, path, body, tries=10):
     req = urllib.request.Request(f"http://127.0.0.1:{port}{path}", json.dumps(body).encode(),
                                  {"Content-Type": "application/json"})
-    with urllib.request.urlopen(req, timeout=300) as r:
-        return r.read().decode()
+    for i in range(tries):  # survives a server or tunnel hiccup
+        try:
+            with urllib.request.urlopen(req, timeout=300) as r:
+                return r.read().decode()
+        except OSError as e:
+            if i == tries - 1:
+                raise
+            print(f"POST {port}{path} failed ({e}), retrying", flush=True)
+            time.sleep(30)
 
 
 def write_atomic(path, text):
@@ -65,7 +75,7 @@ def start_rollouts(run, a, shards):
                 over += [f"llm@{p}.plan_config.llm=glimmer_vllm_tools1",
                          f"instruct@{p}.plan_config.instruct=zero_shot_native_tools",
                          f"{p}._target_=muse_habitat.native_tools.NativeToolsPlanner",
-                         f"{p}.plan_config.llm.port={a.port}",
+                         f"{p}.plan_config.llm.port={a.ports[n % len(a.ports)]}",
                          f"{p}.plan_config.llm.generation_params.temperature={a.temperature}"]
             env = {**os.environ, "PARTNR_SPLIT": "train", "MUSE_TRAJ_DIR": str(run / f"traj_k{k}"),
                    "MUSE_POLICY_FILE": str(run / "policy")}
@@ -111,7 +121,7 @@ def completed_groups(run, a, shards, consumed):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("name")
-    ap.add_argument("--port", type=int, default=8021)
+    ap.add_argument("--port", default="8021", help="vLLM server port(s), comma-separated")
     ap.add_argument("--rollout-gpus", default="0")
     ap.add_argument("--samples", type=int, default=8)
     ap.add_argument("--shards", type=int, default=3)
@@ -126,7 +136,12 @@ def main():
     ap.add_argument("--rank", type=int, default=32)
     ap.add_argument("--budget", type=int, default=12288)
     ap.add_argument("--keep", type=int, default=3, help="adapters kept loaded in vLLM")
+    ap.add_argument("--remote", help="<host>:<dir> where the servers read adapters (rsync), if not this machine")
+    ap.add_argument("--rsh", default="ssh", help="rsync's remote shell for --remote")
+    ap.add_argument("--save-every", type=int, default=0,
+                    help="with --remote: delete local adapters once unloaded, except every <n>th (0: keep all)")
     a = ap.parse_args()
+    a.ports = [int(x) for x in a.port.split(",")]
     run = ROOT / "runs" / a.name
     (run / "adapters").mkdir(parents=True, exist_ok=True)
     pool = json.load(open(ROOT / "data" / "splits" / "train_pool.json"))
@@ -195,12 +210,21 @@ def main():
                       episodes=[g[0].episode_id for g in batch], rewards=[[r.reward for r in g] for g in batch],
                       policies=sorted({m for g in batch for ro in g for m in ro.models}))
             name = f"p{step + 1}"
-            model.save_pretrained(run / "adapters" / name)
-            post(a.port, "/v1/load_lora_adapter", {"lora_name": name, "lora_path": str(run / "adapters" / name)})
+            path = run / "adapters" / name
+            model.save_pretrained(path)
+            if a.remote:
+                subprocess.run(["rsync", "-a", "--mkpath", "-e", a.rsh, f"{path}/", f"{a.remote}/{name}/"], check=True)
+                path = f"{a.remote.split(':', 1)[1]}/{name}"
+            for port in a.ports:
+                post(port, "/v1/load_lora_adapter", {"lora_name": name, "lora_path": str(path)})
             write_atomic(run / "policy", name + "\n")
             loaded.append(name)
             while len(loaded) > a.keep:  # in-flight turns of older policies finish within the keep window
-                post(a.port, "/v1/unload_lora_adapter", {"lora_name": loaded.pop(0)})
+                old = loaded.pop(0)
+                for port in a.ports:
+                    post(port, "/v1/unload_lora_adapter", {"lora_name": old})
+                if a.remote and a.save_every and int(old[1:]) % a.save_every:
+                    shutil.rmtree(run / "adapters" / old)
             st["policy"] = name
             print(json.dumps(st), flush=True)
             log.write(json.dumps(st) + "\n")

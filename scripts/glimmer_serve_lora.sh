@@ -4,7 +4,8 @@
 # 5-layer assistant; the drafter has no adapter, the target model verifies with it). vLLM env: scripts/env.sh.
 # Text only (--language-model-only: the vision encoder is not loaded). Base model served as "glimmer". Weights from the
 # HF cache, offline.
-#   scripts/glimmer_serve_lora.sh <gpu> [port]      log: runs/glimmer_serve_lora_<port>.log
+#   scripts/glimmer_serve_lora.sh <gpu(s)> [port]      log: runs/glimmer_serve_lora_<port>.log
+# TP: tensor-parallel size (default 1; <gpus> e.g. 0,1 for 2).
 # GLIMMER_MEM: vLLM's GPU memory share (default 0.85); MAX_LORA_RANK (default 64); MAX_LORAS per batch (default 4).
 set -euo pipefail
 gpu=$1 port=${2:-8021}
@@ -19,6 +20,6 @@ model=$HUB/models--meta-models--Muse-Glimmer-30B/snapshots/cec94fcfd6512f2cfe708
 mkdir -p "$root/runs"
 export CUDA_VISIBLE_DEVICES=$gpu HF_HUB_OFFLINE=1 VLLM_NO_USAGE_STATS=1 DO_NOT_TRACK=1 VLLM_ALLOW_RUNTIME_LORA_UPDATING=1
 exec "$VLLM_ENV/bin/vllm" serve "$model" --served-model-name glimmer --host 127.0.0.1 --port "$port" \
-    --dtype bfloat16 --max-model-len 32768 --gpu-memory-utilization ${GLIMMER_MEM:-0.85} \
+    --dtype bfloat16 --max-model-len 32768 --gpu-memory-utilization ${GLIMMER_MEM:-0.85} --tensor-parallel-size ${TP:-1} \
     --language-model-only --enable-lora --max-lora-rank ${MAX_LORA_RANK:-64} --max-loras ${MAX_LORAS:-4} "${spec[@]}" \
     > "$root/runs/glimmer_serve_lora_$port.log" 2>&1
