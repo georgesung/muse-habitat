@@ -18,9 +18,7 @@ from pathlib import Path
 
 import torch
 from transformers.masking_utils import create_causal_mask, create_sliding_window_causal_mask
-
-MODEL = ("/home/user/.cache/huggingface/hub/models--meta-models--Muse-Glimmer-30B/snapshots/"
-         "cec94fcfd6512f2cfe708138c32533b346ea4f69")
+from muse_habitat.models import GLIMMER as MODEL
 WEIGHTS = ("self_attn.o_proj.weight", "mlp.down_proj.weight")
 
 

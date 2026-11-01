@@ -10,12 +10,12 @@ set -euo pipefail
 gpu=$1 port=${2:-8021}
 root="$(cd "$(dirname "$0")/.." && pwd)"
 . "$root/scripts/env.sh"
-draft=~/.cache/huggingface/hub/models--meta-models--Muse-Glimmer-30B-assistant/snapshots/c676cce91658f9568aaf264a416211e2782735b7
+draft=$HUB/models--meta-models--Muse-Glimmer-30B-assistant/snapshots/c676cce91658f9568aaf264a416211e2782735b7
 spec=()
 # with LoRA, vLLM needs max_num_batched_tokens >= max_num_seqs * (SPEC_TOKENS + 1): cap the batch at MAX_NUM_SEQS (default 64)
 [ "${DFLASH:-0}" = 1 ] && spec=(--speculative-config "{\"method\":\"dflash\",\"model\":\"$draft\",\"num_speculative_tokens\":${SPEC_TOKENS:-15}}"
                                --max-num-seqs "${MAX_NUM_SEQS:-64}")
-model=~/.cache/huggingface/hub/models--meta-models--Muse-Glimmer-30B/snapshots/cec94fcfd6512f2cfe708138c32533b346ea4f69
+model=$HUB/models--meta-models--Muse-Glimmer-30B/snapshots/cec94fcfd6512f2cfe708138c32533b346ea4f69
 mkdir -p "$root/runs"
 export CUDA_VISIBLE_DEVICES=$gpu HF_HUB_OFFLINE=1 VLLM_NO_USAGE_STATS=1 DO_NOT_TRACK=1 VLLM_ALLOW_RUNTIME_LORA_UPDATING=1
 exec "$VLLM_ENV/bin/vllm" serve "$model" --served-model-name glimmer --host 127.0.0.1 --port "$port" \

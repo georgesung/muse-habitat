@@ -6,3 +6,5 @@ _first() { for d; do [ -e "$d" ] && { echo "$d"; return; }; done; echo "$1"; }
 PARTNR_DIR=${MUSE_PARTNR:-$(_first "$root/third_party/partnr" "$root/../partnr")}
 PARTNR_ENV=${MUSE_PARTNR_ENV:-$(_first "$root/envs/partnr" "$root/../envs/partnr")}
 VLLM_ENV=${MUSE_VLLM_ENV:-$(_first "$root/envs/vllm" "$root/../envs/vllm")}
+# HF hub cache, as huggingface_hub resolves it
+HUB=${HF_HUB_CACHE:-${HF_HOME:-$HOME/.cache/huggingface}/hub}

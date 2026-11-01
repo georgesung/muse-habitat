@@ -12,9 +12,7 @@ from pathlib import Path
 import torch
 
 from muse_habitat.grpo import groups, load_rollouts, packs, train_step
-
-MODEL = ("/home/user/.cache/huggingface/hub/models--meta-models--Muse-Glimmer-30B/snapshots/"
-         "cec94fcfd6512f2cfe708138c32533b346ea4f69")
+from muse_habitat.models import GLIMMER as MODEL
 # all text layers; not the attention output gate (vLLM may map its name into the MLP's packed gate_up_proj)
 TARGETS = r".*language_model.*\.(self_attn\.(q_proj|k_proj|v_proj|o_proj)|mlp\.(gate_proj|up_proj|down_proj))"
 

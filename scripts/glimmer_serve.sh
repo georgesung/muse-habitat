@@ -8,7 +8,7 @@ gpu=$1 port=${2:-8011}
 log=glimmer_serve.log; [ "$port" = 8011 ] || log=glimmer_serve_$port.log
 root="$(cd "$(dirname "$0")/.." && pwd)"
 . "$root/scripts/env.sh"
-hub=~/.cache/huggingface/hub
+hub=$HUB
 model=$hub/models--meta-models--Muse-Glimmer-30B/snapshots/cec94fcfd6512f2cfe708138c32533b346ea4f69
 draft=$hub/models--meta-models--Muse-Glimmer-30B-assistant/snapshots/c676cce91658f9568aaf264a416211e2782735b7
 mkdir -p "$root/runs"

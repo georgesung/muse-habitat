@@ -32,8 +32,7 @@ from muse_habitat.grpo import groups as make_groups
 from muse_habitat.grpo import TrajReader, packs, train_step
 
 ROOT = Path(__file__).resolve().parents[1]
-MODEL = ("/home/user/.cache/huggingface/hub/models--meta-models--Muse-Glimmer-30B/snapshots/"
-         "cec94fcfd6512f2cfe708138c32533b346ea4f69").replace("/home/user", str(Path.home()))
+from muse_habitat.models import GLIMMER as MODEL
 TARGETS = r".*language_model.*\.(self_attn\.(q_proj|k_proj|v_proj|o_proj)|mlp\.(gate_proj|up_proj|down_proj))"
 
 

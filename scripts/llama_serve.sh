@@ -8,7 +8,7 @@ set -euo pipefail
 gpu=$1 port=$2 mem=$3 repo=$4 name=$5
 root="$(cd "$(dirname "$0")/.." && pwd)"
 . "$root/scripts/env.sh"
-model=$(ls -d ~/.cache/huggingface/hub/models--${repo//\//--}/snapshots/*/ | head -1)
+model=$(ls -d $HUB/models--${repo//\//--}/snapshots/*/ | head -1)
 mkdir -p "$root/runs"
 export CUDA_VISIBLE_DEVICES=$gpu HF_HUB_OFFLINE=1 VLLM_NO_USAGE_STATS=1 DO_NOT_TRACK=1 VLLM_ALLOW_LONG_MAX_MODEL_LEN=1
 exec "$VLLM_ENV/bin/vllm" serve "$model" --served-model-name "$name" --host 127.0.0.1 --port "$port" \
