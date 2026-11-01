@@ -18,8 +18,9 @@ per turn, reasoning strength low; `docs/reports/baseline.md`).
 | `docs/reports/` | `baseline.md` (the PARTNR report so far) |
 | `runs/` | run logs (not in git) |
 
-Runs use the sibling dirs `../partnr` (PARTNR at `ddfff19`, unmodified, with its data) and `../envs/partnr`,
-`../envs/vllm`. Our code goes on `PYTHONPATH` (`src/`) and the Hydra search path (`conf/`) in `scripts/partnr_run.sh`.
+Runs need PARTNR (`ddfff19`, unmodified, with its data) and two envs (PARTNR's, vLLM's), either inside the project
+(`third_party/partnr`, `envs/partnr`, `envs/vllm`) or next to it (`../partnr`, `../envs/...`); see `scripts/env.sh`.
+Our code goes on `PYTHONPATH` (`src/`) and the Hydra search path (`conf/`) in `scripts/partnr_run.sh`.
 
 ```
 scripts/glimmer_serve.sh 0 8011 &          # Glimmer on GPU 0; GLIMMER_MEM=0.85 when Habitat shares the GPU

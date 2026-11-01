@@ -18,7 +18,10 @@ import json
 import random
 from pathlib import Path
 
-EPISODES = Path(__file__).resolve().parents[2] / ".." / "partnr" / "data" / "datasets" / "partnr_episodes" / "v0_0"
+_ROOT = Path(__file__).resolve().parents[2]
+_PARTNR = next((p for p in (_ROOT / "third_party" / "partnr", _ROOT / ".." / "partnr") if p.exists()),
+               _ROOT / "third_party" / "partnr")  # the layouts of scripts/env.sh
+EPISODES = _PARTNR / "data" / "datasets" / "partnr_episodes" / "v0_0"
 
 
 def load(path):
