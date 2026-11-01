@@ -1,0 +1,11 @@
+episode_id,instruction,replanning_count_0,replanning_count_1,run_id,runtime,sim_step_count,task_percent_complete,task_state_success
+195,Help me tidy up the office. Put the monitor stand and laptop back in the workout room. Set them on the table next to each other.,4.0,8.0,0,119.73359251022339,1866.0,1.0,1.0
+274,"First, organize the office by putting the laptop, credit card, tray, sushi mat, and electronic cable back on a new table. Then, move them to the bench in the living room and place them next to each other.",22.0,10.0,0,324.70009994506836,4416.0,0.0,0.0
+109,"Help me tidy up the living room table. Move the lamp, phone, vase, and plant to the other living room table.",8.0,11.0,0,173.61382007598877,3707.0,1.0,1.0
+142,"First, move the sushi mat, then the ramekin, and finally the spoon from the dining room table to the entryway table. Place them next to each other.",6.0,37.0,0,757.1816029548645,20000.0,1.0,1.0
+587,Move the toy cactus and toy vehicle from the living room table to the shelves. Place them next to each other on the shelves.,4.0,4.0,0,132.55929851531982,2005.0,1.0,1.0
+400,Move the helmet and baseball bat from the bedroom chest of drawers to the living room shelves. Place them next to each other on the shelves.,15.0,14.0,0,203.01125574111938,3237.0,1.0,1.0
+15,Let's put away the toys and backpack in the bedroom. Leave one toy vehicle and one toy bee on the table. Take the other toy vehicle and the backpack and put them on the bed.,6.0,14.0,0,324.2999153137207,5296.0,0.75,0.0
+971,Move the kettle and electric kettle from the kitchen to the bedroom and turn on the kettle in the bedroom.,7.0,13.0,0,158.6130747795105,2107.0,1.0,1.0
+66,Can you help me move the candle from the table to the couch? Also let's place the cushion from the couch on the living room table.,9.0,9.0,0,76.6531114578247,1405.0,0.0,0.0
+825,"Move the pitcher and knife from the bedroom table to the kitchen and fill the pitcher with water. Turn off the lamp, and clean the living room table.",51.0,29.0,0,531.5728542804718,8847.0,0.8,0.0

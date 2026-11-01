@@ -1,0 +1,15 @@
+# Glimmer with native thinking (setup B): each assistant turn thinks in the to=self channel, then answers to=user under
+# the planner's grammar. Use with instruct zero_shot_native (no ReAct "Thought:" line). Strength: override
+# evaluation.agents.agent_N.planner.plan_config.llm.reasoning_strength=medium
+defaults:
+  - glimmer_vllm
+  - _self_
+
+reasoning_strength: low
+system_suffix : "\n\nReasoning strength: ${.reasoning_strength}.\n\n# Valid recipients: \"self\", \"user\"."
+
+thinking:
+  open      : "<|start|>assistant to=self<|message|>"
+  close     : "<|eom|>"
+  stop      : ["<|eom|>", "<|eot|>"]
+  max_tokens: 4096

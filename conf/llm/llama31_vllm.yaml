@@ -1,0 +1,22 @@
+# Llama 3.1 8B Instruct (the paper's ReAct 8B) served by vLLM (scripts/llama_serve.sh), raw completions with Llama 3
+# chat tags as PARTNR's own HF path uses; the planner's grammar goes to vLLM's structured outputs.
+llm:
+  _target_    : muse_habitat.vllm_llm.VLLMCompletion
+  _partial_   : True
+
+host          : 127.0.0.1
+port          : 8014
+timeout       : 600
+inference_mode: vllm
+
+system_tag    : "<|start_header_id|>system<|end_header_id|>\n\n"
+user_tag      : "<|start_header_id|>user<|end_header_id|>\n\n"
+assistant_tag : "<|start_header_id|>assistant<|end_header_id|>\n\n"
+eot_tag       : "<|eot_id|>"
+
+generation_params:
+  engine        : llama31
+  max_tokens    : 250
+  temperature   : 0.0
+  stop          : "Assigned!"
+  batch_response: False

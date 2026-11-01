@@ -1,0 +1,11 @@
+episode_id,instruction,replanning_count_0,replanning_count_1,run_id,runtime,sim_step_count,task_percent_complete,task_state_success
+146,"Move the candle from the table to the couch and place it next to the cushion. Then, place the cushion from the couch on the table in the living room.",4.0,11.0,0,96.34284663200378,1319.0,1.0,1.0
+80,Move the kettle and potato from the counter to the stool in the kitchen.,11.0,34.0,0,796.6520609855652,20000.0,1.0,1.0
+121,"Help me move toy vehicle, toy foods, and stuffed toy from the bedroom to the dining room. Place the toy vehicle on the table, all the toy food on the table, and the stuffed toy on the chair.",22.0,51.0,0,432.6383228302002,9298.0,1.0,1.0
+403,Move the toy construction set and toy swing from the bedroom table to the living room shelves. Place them next to each other on the shelves.,8.0,4.0,0,110.98297691345215,1824.0,1.0,1.0
+829,Move the pitcher and glass from the entryway bench to the living room table and fill the pitcher with water. Clean the entryway bench.,18.0,16.0,0,223.99404788017273,3265.0,1.0,1.0
+0,Place the candle and candle holder on the white table in the living room. Move the plant to the same table.,22.0,11.0,0,232.64448237419128,3531.0,0.0,0.0
+19,"Help me move a toy fire truck, one apple, a credit card, and a toy airplane from the bedroom to the living room. Place them on the glass tables.",15.0,18.0,0,458.2976276874542,6335.0,1.0,1.0
+203,"Help me prepare the dining table. First, place the laptop and credit cards on the table, positioning them next to each other. Then, bring the tray and sushi mat back on the dining table.",9.0,16.0,0,146.18708634376526,2743.0,1.0,1.0
+279,"First, set the table for dinner in the office. Place a bowl next to a spoon, a fork next to a plate on the table. Then, move the bowl, spoon, fork, and plate to the kitchen and place them in the cabinet.",29.0,36.0,0,343.3402681350708,5349.0,0.6,0.0
+682,"Move the laptop stand, multiport hub, and hand towel from the dining table to the kitchen stool. Place them next to each other on the stool.",5.0,3.0,0,80.25187993049622,1529.0,1.0,1.0

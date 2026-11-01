@@ -1,0 +1,11 @@
+episode_id,instruction,replanning_count_0,replanning_count_1,run_id,runtime,sim_step_count,task_percent_complete,task_state_success
+149,"First, move the toy vehicle, then the toy animal, and finally the stuffed toy from the table to the chair in the living room. Place them next to each other on the chair.",5.0,6.0,0,121.98083448410034,1315.0,0.6,0.0
+406,"Put the handbag, backpack, and carrying case on the chair in the bedroom.",12.0,15.0,0,245.99745416641235,4139.0,1.0,1.0
+881,Move the jug and cup from the dining table to the kitchen and fill both with water.,10.0,11.0,0,94.74518465995789,1548.0,1.0,1.0
+344,"First, move the stuffed toy from the chair in the bedroom to the chair in the living room. Then place it on the shelves in the closet.",10.0,51.0,0,551.5286514759064,14230.0,1.0,1.0
+123,Move a phone and a phone stand from the living room to the dining room. Place them on the table.,5.0,4.0,0,111.32901692390442,2011.0,1.0,1.0
+209,Move the laptop and then the laptop cover from the table in the living room to the table in the dining room and place them next to each other.,4.0,10.0,0,90.06091094017029,1884.0,1.0,1.0
+2,Help me move the toy fire truck and the toy bee from the chair in the kitchen to a chair in the living room.,4.0,17.0,0,223.5617172718048,4107.0,1.0,1.0
+23,Help me move some things around. Put the sponge on the bedside table. Move the action figures to the stand in the living room. Put the plant saucer on the kitchen counter.,30.0,18.0,0,454.5463182926178,7152.0,0.75,0.0
+83,"Help me tidy up the bedroom and kitchen. Put both stuffed toys in a new chest of drawers, the toy airplane in a new chest of drawers, the pan in another cabinet, and the apple on the living room table.",25.0,11.0,0,242.10418915748596,4396.0,0.8,0.0
+685,Move the stuffed toy and the doll from the living room table to the bedroom chest of drawers. Place them next to each other on the chest of drawers.,5.0,7.0,0,113.91022634506226,1919.0,1.0,1.0

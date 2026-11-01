@@ -1,0 +1,9 @@
+# Llama 3 8B Instruct on the same vLLM backend as llama31_vllm (scripts/llama_serve.sh ... llama3): separates the model
+# from the serving path (PARTNR's HF + transformers-CFG vs vLLM + xgrammar).
+defaults:
+  - llama31_vllm
+  - _self_
+
+port: 8015
+generation_params:
+  engine: llama3

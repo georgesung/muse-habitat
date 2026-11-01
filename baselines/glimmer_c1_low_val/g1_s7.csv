@@ -1,0 +1,10 @@
+episode_id,instruction,replanning_count_0,replanning_count_1,run_id,runtime,sim_step_count,task_percent_complete,task_state_success
+120,"Move the toy fire truck and toy airplane to the table in the living room, and put the toy construction set on the couch.",5.0,51.0,0,122.18212795257568,1442.0,1.0,1.0
+199,"Help me prepare the living room for a dinner party. First, move the cellphone and candle holder to the stand or the stool and set them next to each other. THe toy fire truck can go on the couch.",5.0,35.0,0,737.7265954017639,20000.0,1.0,1.0
+402,Move the book and folder from the bedroom table to the living room shelves. Place them next to each other on the shelves.,11.0,44.0,0,963.4796175956726,20000.0,1.0,1.0
+144,"Move the candle, vase, and plant from the coffee table to the dining table? Place them next to each other on the dining table.",14.0,6.0,0,132.08367204666138,2187.0,1.0,1.0
+69,"We should clean up. Let's group the toy fire truck, toy animal, and stuffed toy together on one matching chest of drawers in the bedroom.",6.0,51.0,0,627.9410486221313,13325.0,1.0,1.0
+18,"Take the credit card, phone, watch, and cushion from the living room and place them on the bedside table in the bedroom.",17.0,49.0,0,940.573812007904,20000.0,1.0,1.0
+277,"Help me set the table for dinner in the living room. Move the plate, bowl, and picture frame to the dining room and place them on the cabinet.",22.0,51.0,0,559.9630610942841,12868.0,0.0,0.0
+827,"Move the teapot and vase from the hallway table to the living room and fill the teapot with water. Turn on the lamp, and clean the hallway table.",51.0,26.0,0,250.98534417152405,4129.0,1.0,1.0
+607,Move the book and laptop cover from the office chair to the living room couch. Place them next to each other on the couch.,11.0,6.0,0,72.11011362075806,1704.0,1.0,1.0

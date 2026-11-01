@@ -1,0 +1,11 @@
+episode_id,instruction,replanning_count_0,replanning_count_1,run_id,runtime,sim_step_count,task_percent_complete,task_state_success
+184,Help me move the plant and its saucer from the table in the bedroom to the table in the living room and place them next to each other.,7.0,43.0,0,984.515852689743,20000.0,1.0,1.0
+124,"Move the phone, watch, and tape from the living room to the dining room. Place them next to each other on the table.",5.0,6.0,0,95.14032053947449,1890.0,1.0,1.0
+410,Put the pitcher and ladle on the bedroom table.,9.0,11.0,0,99.86937737464905,1767.0,1.0,1.0
+882,Move the book from the living room table to the bedroom table and turn on the lamp.,9.0,32.0,0,785.2608368396759,20000.0,0.5,0.0
+210,Bring 3 forks from cabinet 6 in the kitchen to the dining room and place them next to each other on the table.,14.0,5.0,0,83.33885216712952,892.0,1.0,1.0
+88,"Help me tidy up the office. Put the monitor stand, laptop, credit card, and mouse pad on the chair.",37.0,8.0,0,776.0628407001495,20000.0,1.0,1.0
+345,"First, put the toy food on the chest of drawers in the bedroom. Then, move the toy food and fire truck next to each other on the table in the living room.",12.0,44.0,0,821.4228401184082,20000.0,0.75,0.0
+3,"Help me tidy up the bedroom. Put the plant saucer and toy airplane together on a different bedroom table. Then, put the phone stand and kettle together to a new bedroom table.",7.0,9.0,0,227.92091703414917,3848.0,0.5,0.0
+34,"Help me move some objects from the living room to the bedroom. First, take the credit card from the coffee table and place it on the bedside table. Then, bring the handbag from the chair and place it on the bed. Finally, take the cushion from the chair and place it on the bed.",18.0,25.0,0,235.85834622383118,4133.0,0.3333333333333333,0.0
+686,"Help me set up a tea party in the dining room. First, move the bowl, spoon, and plate from the kitchen to the dining table. Then, relocate them to a chair and place them next to each other.",7.0,37.0,0,656.9476466178894,20000.0,1.0,1.0

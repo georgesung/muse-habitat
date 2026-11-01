@@ -1,0 +1,11 @@
+episode_id,instruction,replanning_count_0,replanning_count_1,run_id,runtime,sim_step_count,task_percent_complete,task_state_success
+190,"Help me move some toys and a plant from the bedroom to the living room. For specifics, take the toy airplanes, toy bee, and plant saucer from the table in the bedroom. Place them next to each other on the table in the living room.",19.0,13.0,0,352.3635365962982,4779.0,1.0,1.0
+250,"First, move the plant and plant saucer from the bedroom to the hallway. Then, place them both on the counter in the kitchen, positioning them next to each other.",22.0,8.0,0,307.9822449684143,4513.0,1.0,1.0
+394,"Take the handbag, laptop, and cellphone from the entryway bench to the kitchen counter.",10.0,39.0,0,924.9874618053436,20000.0,1.0,1.0
+137,Move the kettle and the electric kettle from the kitchen counter to the entryway table and place them next to each other.,8.0,6.0,0,95.58229279518127,1775.0,1.0,1.0
+898,Play a game. Move the basketball and the gaming console to the living room. Turn on the gaming console.,13.0,10.0,0,129.5064353942871,1801.0,1.0,1.0
+50,"Move the sushi mat, ramekin, and toy vehicle from the living room table to the dining room table.",4.0,15.0,0,161.43132972717285,3227.0,1.0,1.0
+530,Move the folder and file sorter from the bedroom chest of drawers to the entryway table. Place them next to each other on the table.,24.0,19.0,0,464.05331802368164,4692.0,1.0,1.0
+95,"Help me clean up the table for dinner in the dining room. Place a spoon, a fork, and a toy fire truck in the cabinet.",19.0,20.0,0,194.3239517211914,2887.0,1.0,1.0
+755,"First, take the stuffed toy from the bedroom to the laundryroom/mudroom. Then, move it to the living room and place it on couch.",3.0,9.0,0,91.67400407791138,1444.0,1.0,1.0
+9,Take the credit card from the hallway to the bedroom and put it on the bedside table.,12.0,11.0,0,144.52420091629028,2413.0,1.0,1.0

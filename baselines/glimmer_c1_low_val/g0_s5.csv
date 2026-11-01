@@ -1,0 +1,11 @@
+episode_id,instruction,replanning_count_0,replanning_count_1,run_id,runtime,sim_step_count,task_percent_complete,task_state_success
+192,"Help me tear down my office setup. First, place the laptop and monitor stand out in the living room. Then, place the credit card and mouse pad next to each other on the living room bench.",8.0,35.0,0,878.4116714000702,20000.0,1.0,1.0
+139,Put the spatula next to the watch and sushi mat on the dining table.,4.0,3.0,0,66.16340279579163,1045.0,0.6666666666666666,0.0
+901,Get ready for a workout. Move the dumbbell and the helmet to the living room.,13.0,6.0,0,115.94757413864136,2184.0,1.0,1.0
+52,"Help me move my toys from the bedroom to the living room. Place the toy vehicle, toy animal, and toy fruits on the table in the living room.",16.0,16.0,0,175.9962921142578,3551.0,1.0,1.0
+584,Put the hand towel and soap dish on the bench in the bathroom and place them next to each other.,4.0,6.0,0,74.93890500068665,1218.0,1.0,1.0
+253,"Help me move some things around. First, put the sponge on the bedside table in the bedroom. Then move the sponge from the bedside table to the bench in the entryway. Next, move the action figures from the chest of drawers in bedroom to the shelf in the living room and place them close to each other. After that, move the action figures from the shelf in the living room to the washerdryer in the laundryroom/mudroom. Finally, put the plant saucer on the kitchen counter next to the sink and then move the plant saucer from the kitchen counter to the table in the hallway.",51.0,45.0,0,1172.4888694286346,20000.0,0.2222222222222222,0.0
+105,Bring all the forks from the cabinet in the kitchen to the dining room and place them on the table.,13.0,15.0,0,95.10009670257568,1493.0,1.0,1.0
+759,"First, swap the positions of the tomato, apple, and bread inside a chest. Then move them to the dining room and place them next to each other on the table.",49.0,51.0,0,555.4094462394714,9874.0,0.0,0.0
+397,Help me set up some visuals on the shelves. Move the picture frame and lamp there. The book can stay where it is.,7.0,6.0,0,120.417240858078,2572.0,1.0,1.0
+11,"Put the mug, squeezer, and toy food on the bench in the entryway.",7.0,5.0,0,163.82447290420532,3715.0,1.0,1.0

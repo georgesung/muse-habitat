@@ -1,0 +1,7 @@
+# Glimmer native tool calling in ONE unconstrained generation per turn (setup C1: think, then the ATEM call), for
+# muse_habitat.native_tools.NativeToolsPlanner; turns without a call fall back to the constrained path (setup C).
+defaults:
+  - glimmer_vllm_think
+  - _self_
+
+tool_single_call: True

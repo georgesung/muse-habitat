@@ -1,0 +1,106 @@
+episode_id,instruction,replanning_count_0,replanning_count_1,run_id,runtime,sim_step_count,task_percent_complete,task_state_success
+729,"First, put the toy airplane next to the toy fire truck. Then, move them to the couch in the hallway.",5.0,5.0,0,152.9234299659729,1671.0,1.0,1.0
+537,"First, move the candle, then the candle holder, and finally the vase from the dining table to the dining counter? Place them next to each other on the counter.",6.0,12.0,0,135.02135252952576,1517.0,0.8,0.0
+433,"Move the backpack, lunch box, and carrying case to the entryway bench.",5.0,38.0,0,1144.0002999305725,20000.0,1.0,1.0
+609,"Put the toy animal, toy vehicle, and toy swing on the bedroom shelves.",5.0,7.0,0,115.37405252456665,1643.0,1.0,1.0
+497,Move the toy pineapple and toy fruits from the kitchen counter to the living room table. Place them next to each other on the table.,11.0,5.0,0,133.00261688232422,1849.0,1.0,1.0
+353,Let's move all the pans and kettles from the living room to the kitchen and scrub them clean.,12.0,35.0,0,266.86473178863525,3492.0,1.0,1.0
+617,"First, move the toy bee, then the toy construction set, and finally the toy swing from the table to the shelves in the bedroom. Place them next to each other on the shelves.",11.0,21.0,0,219.4052734375,4883.0,0.0,0.0
+153,Take the phone from the living room and put it on the bedside table.,9.0,33.0,0,688.863516330719,20000.0,1.0,1.0
+769,"Place plates, glasses, and forks at each setting on the dining table.",35.0,22.0,0,942.1810722351074,9751.0,1.0,1.0
+377,Move the toy bee and toy animal from the living room chair to the bedroom table.,9.0,35.0,0,1470.987681388855,20000.0,1.0,1.0
+673,"First, put the laptop next to the monitor stand on a dining room counter. Then, move them to the dining room table.",7.0,31.0,0,1018.024810552597,20000.0,1.0,1.0
+849,"Move the teapot and plate from the bedroom to the kitchen and fill the teapot with water. Turn off the lamp, and clean the bed.",22.0,23.0,0,562.5232005119324,3550.0,1.0,1.0
+593,Put the laptop stand next to the laptop and mouse pad back on the office counter.,20.0,16.0,0,315.0649995803833,1805.0,0.5,0.0
+777,"First, take the fork from the dining room to the bathroom. Then, move it to the kitchen and place it on a counter.",9.0,11.0,0,272.9771018028259,1858.0,1.0,1.0
+505,"Set up a bedroom nightstand. Place the book, vase, and clock on another table.",5.0,37.0,0,2341.9944789409637,20000.0,1.0,1.0
+225,"Can you put the cushion on the floor in the office, next to the desk, and can you put the laptop on the table in the office?",14.0,11.0,0,239.0063509941101,5188.0,0.6666666666666666,0.0
+305,"First, move the toy fire truck and toy airplane to the table in the living room. Then, place them next to each other on the chair in the workout/gym/exercise room. After that, put the toy construction set in the bedroom.",9.0,42.0,0,757.6447861194611,20000.0,1.0,1.0
+977,Bring the toy swing and the stuffed toy to the lounge chair from the bedroom. Clean the bedroom table.,15.0,14.0,0,164.54576444625854,2273.0,1.0,1.0
+985,Move the candle and vase from the lounge to the living room and clean the candle. Turn off the lamp and clean the coffee table.,51.0,16.0,0,313.9065854549408,5299.0,0.4,0.0
+521,"Move the clock, picture frame, and candle from the living room table to the porch/terrace/deck/driveway chair? Place them next to each other on the chair.",30.0,23.0,0,291.17367935180664,4204.0,0.0,0.0
+177,"Help me move a toy fire truck, 2 apples, a credit card, and a toy airplane from the bedroom to the living room.",6.0,45.0,0,903.9634974002838,20000.0,1.0,1.0
+569,"First, move the helmet from the chest of drawers in the laundryroom/mudroom to the bed. Next, move toy airplanes from the table in the living room to the bed and place them next to each other.",17.0,14.0,0,195.45696830749512,2661.0,1.0,1.0
+457,"Move the toy vehicle, action figure, backpack, and cushion from the living room table to the bedroom stool. Place them on the stool.",19.0,51.0,0,533.0477933883667,9602.0,1.0,1.0
+641,"Help me prepare a snack. First, move basketball, then spoon, and finally bowl from the kitchen counter to the bedroom table. Place them next to each other.",5.0,6.0,0,304.2519643306732,2950.0,1.0,1.0
+665,"Move the teapot, candle, and spoon from the living room shelves to the kitchen counter? Then, place the teapot and the spoon on the table, and the candle on the kitchen cabinet?",25.0,22.0,0,248.98645877838135,2769.0,1.0,1.0
+953,Bring the clock and the plant saucer to the living room table and clean the table.,17.0,10.0,0,529.5418972969055,6443.0,1.0,1.0
+929,"Move the vase and the clock from the living room to the bedroom and fill the vase with water. Turn off the lamp, and clean the living room table.",19.0,51.0,0,155.42991757392883,2010.0,0.2,0.0
+705,"First, move the clock from the table in the bedroom to the stand and place it next to the vase. Then, move the vase from the stand in the bedroom to the shelves in the living room.",51.0,8.0,0,599.0451905727386,15396.0,0.6666666666666666,0.0
+545,"Move keychain, then cellphone, and finally phone stand from the bedroom table to the office table. Place them next to each other.",15.0,11.0,0,295.9549069404602,4112.0,0.8,0.0
+721,"First, bring the jug from the kitchen to the dining room. Then, place it on the table.",7.0,3.0,0,86.64062333106995,1481.0,1.0,1.0
+937,Move the teapot and the cup from the living room to the dining room and fill the teapot with water. Finally clean the living room table.,25.0,51.0,0,796.2086527347565,11756.0,0.25,0.0
+745,"First, move the candle and picture frame from the living room to the bedroom. Then, place them both on the chair in the bedroom , positioning them next to each other.",6.0,4.0,0,91.89493536949158,1564.0,0.8,0.0
+489,Move the laptop and the mouse pad to a new living room table. Move the clock to another shelf.,17.0,31.0,0,935.9918632507324,20000.0,0.3333333333333333,0.0
+57,Help me clean up the toys in the bedroom. Move both toy vehicles and the toy animal together in a new set of drawers.,20.0,39.0,0,600.1107058525085,13479.0,1.0,1.0
+369,"Put the candle holder, statue, and vase back on the table in the bedroom.",17.0,3.0,0,373.999534368515,4008.0,1.0,1.0
+809,Move the phone stand and the cellphone from the bedroom table to the living room table and turn on the cellphone. Clean the bedroom table.,15.0,20.0,0,790.8631494045258,9573.0,1.0,1.0
+441,Move the picture frame and clock from the lounge counter to the dining table. Place them next to each other on the shelves.,5.0,51.0,0,804.2034878730774,15231.0,0.6,0.0
+857,"Move the glass and spoon from the bedroom to the living room and fill the glass with water. Turn on the lamp, and clean the bed.",22.0,29.0,0,836.7234830856323,5127.0,0.4,0.0
+97,"Help me tidy up the bedroom. Move the phone, credit card, and scissors to top of the drawers. Leave the toy animal on the bed.",5.0,40.0,0,748.6304366588593,20000.0,1.0,1.0
+993,Set up a place for meditation. Move the cushion and the candle to the living room table. Turn the candle on.,15.0,11.0,0,360.9452176094055,6751.0,1.0,1.0
+513,Move the spoon and fork from the kitchen cabinet to the dining table. Place them next to each other.,8.0,40.0,0,836.2704870700836,20000.0,1.0,1.0
+241,"First, place the mug, squeezer, and toy food on the table in the hallway. Then, put them on the kitchen counter next to each other.",8.0,6.0,0,169.7791006565094,2915.0,1.0,1.0
+833,Bring the plate and the spoon to the table in the bathroom and clean the table.,29.0,14.0,0,276.3104772567749,3819.0,1.0,1.0
+233,"First, move the credit card from the table in the bedroom to the counter in the kitchen. Then place it on the floor next to the stool in the bedroom.",11.0,33.0,0,913.7504405975342,20000.0,0.6666666666666666,0.0
+697,"Help me prepare the laundry room for a cleaning session. First, move the vase from the washer dryer to the closet table. Then, take the stuffed toy and basket and place them next to each other on the chest of drawers.",7.0,40.0,0,912.8777115345001,20000.0,1.0,1.0
+385,Move the basket and backpack from the mudroom cabinet to the bedroom chest of drawers. Place them next to each other on the chest of drawers.,13.0,12.0,0,164.3964102268219,1637.0,1.0,1.0
+961,Bring the spoon and the fork to the counter and clean the counter.,21.0,20.0,0,625.0575878620148,6325.0,1.0,1.0
+425,Move the fork and spoon from the kitchen table to the living room table.,7.0,10.0,0,77.36759877204895,916.0,1.0,1.0
+417,"Move the bread, cake pan, and bundt pan from the kitchen cabinet to the living room table. Place them next to each other on the table.",17.0,5.0,0,81.30367541313171,746.0,1.0,1.0
+921,Move the lamp and clock from the living room to the bedroom and place them on the shelves.,5.0,4.0,0,72.97108483314514,1238.0,1.0,1.0
+553,"Take the toy vehicle, toy fruits, and stuffed toy from the bedroom shelves to the living room table. Set the toy fruits near each other.",6.0,14.0,0,123.75365424156189,2181.0,1.0,1.0
+945,Bring the laptop and the credit card to the office table from the bedroom and turn on the laptop. Clean the bedroom bed.,12.0,8.0,0,182.4676797389984,2420.0,1.0,1.0
+841,Move the laptop and laptop stand from the bedroom to the living room and place them on the table.,9.0,12.0,0,96.7194938659668,1837.0,1.0,1.0
+689,"First, move the book, then the folder, and finally the pencil case from the living room table to the bedroom table. Then, place them next to each other on the shelves in the closet.",13.0,28.0,0,320.6066780090332,5827.0,1.0,1.0
+337,"First, put the toy fire truck and toy fruits in another chest of drawers in the bedroom together. Then move them to the shelves in the closet and place them next to each other.",10.0,36.0,0,846.8375706672668,20000.0,1.0,1.0
+817,Bring the bottle and the spoon to the living room table from the bedroom and fill the bottle with water. Clean the bedroom bed.,30.0,25.0,0,694.6546008586884,8914.0,1.0,1.0
+529,"First, move the candle from the table in the living room to the counter in the kitchen? Next, move knives from the shelves in the kitchen to the table in the living room and place them next to each other.",18.0,15.0,0,594.2809655666351,6768.0,1.0,1.0
+297,"First, help me move the candle, the book, and the vase from the living room to the dining room? Then, place them next to each other on the table in the office.",19.0,51.0,0,465.2188136577606,8580.0,1.0,1.0
+481,"Move the dumbbell, tennis racquet, and spray bottle from the workout table to the office table.",5.0,5.0,0,71.57931089401245,1417.0,1.0,1.0
+281,"Help me set up my home office. Place the laptop, the monitor stand, and the credit card in the living room and place them next to each other.",21.0,51.0,0,518.378301858902,13795.0,1.0,1.0
+969,Move the plate and bowl from the kitchen to the dining table in the living room and fill the bowl with water.,28.0,37.0,0,896.3096873760223,20000.0,0.0,0.0
+169,"Help me organize my living room. First, place 2 credit cards on the chair next to the table. Then place the gaming console and canister next to each other on the same chair?",17.0,51.0,0,805.1189343929291,13261.0,0.8,0.0
+865,Dust off the table in the office. Clean all of the books in the office and move them to the cabinet in the office.,12.0,15.0,0,98.1509325504303,753.0,1.0,1.0
+561,Bring the toy construction set from the office to the living room and place it on the table.,8.0,3.0,0,86.59008479118347,1363.0,1.0,1.0
+873,"Move the toy airplane and toy vehicle from the closet table to the living room, and clean the closet table.",15.0,6.0,0,147.05102610588074,2301.0,1.0,1.0
+73,Move the toy fire truck and the stuffed toys to new chest of drawers. Move the ball to another chest of drawers.,6.0,51.0,0,343.74203515052795,5944.0,1.0,1.0
+161,"Take the kettle, potato, and spatula to the bedroom and put them on the bedside table, placing them next to each other.",5.0,51.0,0,458.7919809818268,10079.0,1.0,1.0
+361,Bring the laptop and the electronic cable to the mudroom and turn on the laptop. Clean the mudroom cabinets.,35.0,35.0,0,1223.9352626800537,20000.0,0.0,0.0
+473,"Help me set up a office station in the office. Place the laptop, laptop cover, and folder on the table.",5.0,11.0,0,217.9626042842865,4376.0,1.0,1.0
+913,"Move the teapot and plate from the living room table to the kitchen and fill the teapot with water. Then turn on the lamp, and clean the living room table.",21.0,10.0,0,247.6975872516632,3398.0,1.0,1.0
+905,Move the laptop and monitor stand from the office to the dining room and turn on the laptop.,5.0,11.0,0,111.29146003723145,1640.0,1.0,1.0
+217,Organize the bedroom. Put all the toys on the bedroom couch.,7.0,13.0,0,147.4873902797699,3022.0,1.0,1.0
+465,Move the toy swing and toy animal from the living room table to the bedroom chest of drawers. Place them next to each other on the shelves.,13.0,11.0,0,184.90431141853333,3553.0,1.0,1.0
+737,Move the jug and cup from the kitchen counter to the living room table. Then move the tray on the couch.,9.0,7.0,0,332.48298954963684,5920.0,0.6666666666666666,0.0
+713,Move the dumbbell and show to the shelves in the living room and place them next to each other.,20.0,14.0,0,645.5910654067993,11552.0,0.3333333333333333,0.0
+889,"Move the kettle and plate from the kitchen counter to the dining table, and clean the kitchen counter.",10.0,13.0,0,117.09530639648438,2272.0,1.0,1.0
+657,Move the toy airplane and toy vehicle from the closet shelves to the living room table. Place them next to each other on the table.,5.0,15.0,0,71.57281136512756,1130.0,1.0,1.0
+129,"Help me set the table for 2 people in the dining room. Place 2 plates, 2 glasses, and 2 forks at each setting, and make sure to place them next to each other.",10.0,12.0,0,182.89433479309082,3433.0,1.0,1.0
+313,"Help me organize the entryway. First, place the phone, watch, and keychain on the coffee table. Then, move them next to each other on the counter in the kitchen.",10.0,51.0,0,721.9660742282867,15437.0,1.0,1.0
+793,Move the toy airplane and toy vehicle from the garage to the lounge and clean the garage bench.,13.0,8.0,0,122.71860694885254,1365.0,1.0,1.0
+633,"Move the kettle, hammer, and basketball from the garage bench to the laundry room cabinet. Place them next to each other on the cabinet.",4.0,37.0,0,1069.7577109336853,20000.0,1.0,1.0
+201,Help me set the table for dinner in the dining room. Place a spoon next to the fork and move the toy fire truck to the living room.,6.0,6.0,0,123.76019430160522,1939.0,1.0,1.0
+289,"First, help me move the laptop and lamp from the bed to the table in the office. Then, place them next to each other on the couch in the living room.",8.0,18.0,0,238.68225359916687,5261.0,1.0,1.0
+761,"Help me set up a tea party in the dining room. First, move the book, pencil case, and folder from the office to the dining table. Then, relocate them to the chair in the dining room and place them next to each other.",15.0,51.0,0,389.83776593208313,8703.0,1.0,1.0
+25,Bring the toy fire truck from the bedroom to the living room and place it on the white table.,11.0,4.0,0,264.1466748714447,4328.0,1.0,1.0
+265,"First, ensure that the phone is next to the picture frame. Then, move the phone and picture frame to the counter in the kitchen and put the spectacles on the counter close to the phone and picture frame.",12.0,51.0,0,452.8115613460541,8109.0,1.0,1.0
+649,"Help me set up a tea party in the dining room. First, move the kettle, spatula, and teapot from the kitchen to the dining table. Place them next to each other on the table.",5.0,5.0,0,105.95789003372192,1559.0,1.0,1.0
+321,"First, move the kettle and the electric kettle from the kitchen counter to the entryway table. Then place them next to each other on the chair in the living room.",7.0,51.0,0,386.3793501853943,9478.0,1.0,1.0
+329,"Help me set up a sushi bar. First, place the sushi mat, spatula, and bowl on the table in the dining room. Then, move them next to each other on the counter in the kitchen.",12.0,13.0,0,211.53790855407715,3530.0,1.0,1.0
+449,Move the toy airplane and toy vehicle from the tv table to the garage bench. Place them next to each other on the bench.,4.0,51.0,0,238.93442273139954,3143.0,1.0,1.0
+785,Move the laptop stand and the monitor stand from the tv room table to the kitchen chair.,4.0,9.0,0,174.13204288482666,1777.0,1.0,1.0
+625,Move the candle and vase from the dining table to the tv couch? Place them next to each other on the couch.,9.0,4.0,0,220.42968845367432,2531.0,1.0,1.0
+801,Move the toy bee and toy animal from the lounge to the tv room and clean the lounge counter.,23.0,7.0,0,190.5394778251648,2359.0,1.0,1.0
+601,"Move the toy construction set from the living room table to the workout table and place it next to the dumbbell. Then, place the dumbbell from the workout table on the living room table next to the toy construction set.",6.0,33.0,0,859.9007639884949,20000.0,0.75,0.0
+577,"Move the lamp, vase, and picture frame from the living room table to the bedroom table. Place them next to each other on the bedroom table.",19.0,12.0,0,181.02748012542725,2857.0,1.0,1.0
+257,"First, move the plant from the table in the living room to the table in the bedroom. Then, place it on the counter in the kitchen.",16.0,31.0,0,913.5577421188354,20000.0,1.0,1.0
+409,"Organize the kitchen by putting the kettle, jug, spoon, and plate on the counter.",7.0,36.0,0,850.1894655227661,20000.0,1.0,1.0
+681,"First, move the basketball, then the helmet, and finally the carrying case from the garage bench to the laundryroom/mudroom cabinet. Then, place them next to each other on the shelves in the tv room.",18.0,31.0,0,508.52721405029297,6475.0,1.0,1.0
+273,"First, help me tidy up the office by putting the monitor stand, laptop, credit card, and mouse pad close by on the living room coffee table. Then move all these items to the bench in the living room.",51.0,51.0,0,836.4152913093567,17618.0,0.5,0.0
+41,"Bring two mugs, two bread, and kettle from the kitchen to the table in the living room.",15.0,8.0,0,243.1695306301117,3297.0,1.0,1.0
+33,Move the picture frame from the bedside table to the dresser in the bedroom.,10.0,51.0,0,225.85760641098022,3900.0,1.0,1.0
+249,"First, help me move a toy fire truck, both apples, a credit card, and a toy airplane from the bedroom to the living room. Then, place them in the kitchen fridge, with the toy fire truck next to the toy airplane and the apples close by.",14.0,51.0,0,1065.1664443016052,17595.0,1.0,1.0
+65,Help me move the sushi mat and toy vehicle from the living room to the entryway.,5.0,4.0,0,92.02104663848877,1808.0,1.0,1.0
+81,Move the stuffed toy and toy pineapple from the dining room to the living room. Place them on a chair.,13.0,11.0,0,95.86351037025452,1192.0,1.0,1.0
+145,"Swap the toy vehicle and toy construction set between the chests of drawers in the bedroom, placing them next to each other.",31.0,51.0,0,760.343756198883,16652.0,1.0,1.0

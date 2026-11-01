@@ -1,0 +1,11 @@
+episode_id,instruction,replanning_count_0,replanning_count_1,run_id,runtime,sim_step_count,task_percent_complete,task_state_success
+191,Place the phone on the hallway table next to the picture frame.,3.0,4.0,0,129.03440499305725,1834.0,1.0,1.0
+581,"Set the table for dinner. Move the jug, knife, plate, and spoon to the living room table. Place a jug next to a spoon, a knife next to a plate on the living room table.",6.0,5.0,0,264.2180640697479,3163.0,1.0,1.0
+251,"Make sure that the toy airplane and toy bee are on the bedside table in the bedroom next to each other. Then move them along with the plant saucer to the table in the hallway. After that, move the cushion to the chair in the bedroom.",13.0,30.0,0,359.8204810619354,6246.0,1.0,1.0
+395,Move the spoon from the table in the hallway to the floor in the living room. Place it next to a chair.,7.0,35.0,0,900.1754806041718,20000.0,0.6666666666666666,0.0
+138,"Help me clean up the toys in the bedroom. Put away the toy vehicle, toy construction set, and action figure in the chest of drawers, placing them next to each other.",19.0,41.0,0,985.9813816547394,20000.0,1.0,1.0
+104,Move the laptop and laptop cover from the table in the living room to the table in the dining room.,4.0,5.0,0,94.42974781990051,1835.0,1.0,1.0
+757,"Move the vase from the cabinet to the table in the dining room. Then, place it on the floor next to the dining chair.",25.0,10.0,0,222.63345980644226,4799.0,0.0,0.0
+10,"Help me organize my living room. Place three credit cards, a gaming console, and a canister on a chair.",15.0,35.0,0,896.384284734726,20000.0,1.0,1.0
+899,Read a book. Move the book and the lamp to the bedroom. Turn on the lamp.,15.0,17.0,0,231.1558780670166,5093.0,1.0,1.0
+51,"Help me move the sushi mat, watch, and tape from the living room table to the bedroom table.",5.0,34.0,0,589.0293343067169,20000.0,1.0,1.0

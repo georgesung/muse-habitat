@@ -1,0 +1,11 @@
+episode_id,instruction,replanning_count_0,replanning_count_1,run_id,runtime,sim_step_count,task_percent_complete,task_state_success
+186,"Help me move these items from the kitchen to the living room. Move the hand towel, kettle, and teapot to the living room.",5.0,16.0,0,201.90071153640747,2347.0,1.0,1.0
+6,"Help me set up a table for lunch in the living room. Place 3 forks, 2 spoons, a piece of bread, and sushi mat on the table.",25.0,51.0,0,918.8099174499512,18257.0,1.0,1.0
+126,"Help me create a relaxing atmosphere in the living room. Place the phone and phone stand on the coffee table, next to each other.",7.0,14.0,0,149.2152898311615,2449.0,1.0,1.0
+885,"Move the backpack and spectacles from the entryway table to the bedroom table, and clean the entryway table.",12.0,51.0,0,400.59565472602844,8105.0,0.6666666666666666,0.0
+347,Move the phone to the chair in the dining room.,4.0,8.0,0,87.72033071517944,1501.0,1.0,1.0
+213,"Move the apple, electronic cable, toy vehicle, and candle from the dining room table to the living room table. Place them next to each other.",6.0,11.0,0,153.0729525089264,2795.0,1.0,1.0
+90,"Help me tidy up the office and living room. Put all the toy food and candle holder on the other table in the living room, and the toy construction set, casserole, and tennis racquet on the table in the gym?",10.0,16.0,0,296.7249939441681,4113.0,1.0,1.0
+752,"Move the helmet, basketball, and stuffed toy from the workout table to the living room table. Then place the helmet and basketball on the table in the bedroom, and the stuffed toy on the bed.",8.0,34.0,0,954.4164791107178,20000.0,1.0,1.0
+466,"Put the vase, plate, and knife back on the coffee table.",15.0,16.0,0,214.97383499145508,4353.0,0.0,0.0
+37,"Place the phone on a glass table. Then, put the picture frame on a glass table. Finally, put the spectacles on a glass table.",27.0,30.0,0,621.4140882492065,10074.0,0.0,0.0

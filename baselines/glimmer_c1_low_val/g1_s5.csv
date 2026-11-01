@@ -1,0 +1,11 @@
+episode_id,instruction,replanning_count_0,replanning_count_1,run_id,runtime,sim_step_count,task_percent_complete,task_state_success
+193,Help me set the table for dinner in the dining room. Put the lamp next to the spoon and fork on the table.,3.0,5.0,0,111.02175331115723,1658.0,1.0,1.0
+106,Help me move the laptop and lamp from the bed to the night stand in the bedroom.,51.0,21.0,0,223.73273587226868,2694.0,0.0,0.0
+140,Move the phone from the coffee table in the living room to the dining table.,7.0,34.0,0,708.6006526947021,20000.0,1.0,1.0
+585,"Move a kettle, a teapot, a spatula, and an egg from the kitchen counter to the bedroom table. Place them next to each other on the table.",10.0,15.0,0,249.52228164672852,3176.0,1.0,1.0
+259,"Help me move some items from the bedroom to the hallway. First, place the credit card, backpack and sushi mat on the hallway table. Then, move them to the bench in the entryway/foyer/lobby and place them next to each other.",26.0,33.0,0,1077.9599735736847,20000.0,1.0,1.0
+946,Bring the kettle and the bowl to the dining room table from the kitchen and fill the kettle with water. Turn off the lamp.,51.0,51.0,0,947.7888162136078,14610.0,0.25,0.0
+398,Can we move the candle and vase from the living room table to the bedroom chest of drawers?,14.0,7.0,0,188.5992465019226,3226.0,1.0,1.0
+13,"Take the cellphone, credit card, and keychain from the table in the hallway and put them on the table in the bedroom.",5.0,41.0,0,882.1991286277771,20000.0,1.0,1.0
+53,Move the sushi mat and toy vehicle from the dining table to the living room table. Move the shoe from the chair to the bedroom table. Place the file sorter on coffee table.,29.0,51.0,0,262.17608666419983,6321.0,0.75,0.0
+821,"Move the can and spoon from the laundry room table to the kitchen and fill the can with water. Turn on the lamp, and clean the laundry room shelf.",14.0,51.0,0,249.49935221672058,6085.0,0.4,0.0

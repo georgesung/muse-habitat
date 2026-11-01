@@ -1,0 +1,11 @@
+episode_id,instruction,replanning_count_0,replanning_count_1,run_id,runtime,sim_step_count,task_percent_complete,task_state_success
+185,"Help me move some items from the bedroom to the hallway. Place the credit card, backpack, and sushi mat on the hallway table, next to each other.",15.0,6.0,0,209.00454902648926,2647.0,1.0,1.0
+5,Move the credit card from the table in the bedroom to another table in the bedroom.,11.0,8.0,0,179.41881918907166,2733.0,1.0,1.0
+35,Help me prepare lunch on the counter. Move the two toy vehicles and the toy animal to the counter. Leave the spoon where it is.,5.0,34.0,0,985.1844973564148,20000.0,1.0,1.0
+125,Help me tidy up the bedroom. Move the toy vehicle and toy animal from the chest of drawers to the table. Place them next to each other. Leave the toy construction set where it is.,12.0,45.0,0,816.1891529560089,20000.0,1.0,1.0
+211,Help me move the laptop and lamp from the bedside table to the bed in the bedroom. Place them next to each other.,4.0,7.0,0,54.020702600479126,824.0,1.0,1.0
+89,Organize the office. Place the battery charger and credit card back on the chair.,10.0,4.0,0,74.09208178520203,1098.0,1.0,1.0
+720,Put the statue and vase on a new table in the living room and place the clock there as well. Then move these items to the shelves in the living room.,8.0,15.0,0,236.6221010684967,3391.0,1.0,1.0
+411,"Organize the dining room. Place the pitcher, candle, and vase back on the table?",9.0,4.0,0,54.68233299255371,827.0,1.0,1.0
+883,"Move the cup and plate from the dining table to the kitchen, and clean them.",19.0,10.0,0,98.65476512908936,1392.0,1.0,1.0
+346,"First, move the toy fire truck from the chair in the living room to the chest of drawers in the bedroom. Then, move the toy food items to the cabinet in the kitchen. Finally, place the stuffed toy next to the chair in the dining room.",33.0,24.0,0,366.43577337265015,7594.0,1.0,1.0

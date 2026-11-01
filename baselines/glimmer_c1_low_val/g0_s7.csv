@@ -1,0 +1,11 @@
+episode_id,instruction,replanning_count_0,replanning_count_1,run_id,runtime,sim_step_count,task_percent_complete,task_state_success
+197,"Organize the office by putting the laptop, credit card, tray, sushi mat, and electronic cable back on the floor and place them next to each other.",7.0,6.0,0,97.74370217323303,1355.0,1.0,1.0
+603,Bring stuffed toys from chest of drawers in the bedroom to the living room and place them next to each other on the couch.,10.0,40.0,0,860.650025844574,20000.0,1.0,1.0
+143,"Help me set up a sushi bar in the dining room. Place the sushi mat, spatula, and bowl on the table next to each other.",6.0,4.0,0,104.09976053237915,1832.0,1.0,1.0
+67,"Help me move the toy vehicle, toy construction set, and toy bee all to the same chest of drawers in the bedroom.",3.0,35.0,0,989.2081713676453,20000.0,1.0,1.0
+401,"Help me tidy up the laundryroom/mudroom table. Move the basket, candle, and vase to the shelves?",6.0,37.0,0,989.9282495975494,20000.0,1.0,1.0
+275,"Organize the office. First, put the laptop on the coffee table and place the monitor stand next to it. Then move these items to the bench in the living room. Place the mouse pad close by and the credit card next to the mouse pad.",39.0,41.0,0,928.4022767543793,20000.0,0.0,0.0
+995,Move the cup and jug from the dining table to the kitchen counter and fill both with water. Clean the tables they came from.,33.0,25.0,0,228.3481249809265,5720.0,1.0,1.0
+17,Help me move the toy pineapple from the table in the hallway to the table in the bedroom. Also move toy foods from the table in the living room to the table in the bedroom.,16.0,10.0,0,154.7669870853424,3698.0,1.0,1.0
+826,"Move the canister and fork from the bathroom table to the kitchen and fill the canister with water. Turn off the lamp, and clean the bathroom table.",15.0,13.0,0,82.9290680885315,1457.0,1.0,1.0
+111,Organize the bedroom. Put the toy food on the bed and the toy animals on the table.,7.0,14.0,0,61.62400841712952,1636.0,1.0,1.0

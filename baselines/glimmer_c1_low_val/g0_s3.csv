@@ -1,0 +1,11 @@
+episode_id,instruction,replanning_count_0,replanning_count_1,run_id,runtime,sim_step_count,task_percent_complete,task_state_success
+187,"Help me move my mug, spoon, and plant from the living room to my bedroom. Place them next to each other.",15.0,11.0,0,235.7723367214203,3014.0,1.0,1.0
+7,"Move the picture frame to a new bedroom table. Also, move the book to a new bedroom table.",4.0,12.0,0,308.66214632987976,5156.0,0.5,0.0
+127,Move the sushi mat from the kitchen counter to the living room table.,3.0,7.0,0,75.8106472492218,1430.0,1.0,1.0
+896,Get ready for a bath. Move the bath towel and the soap dish to the bathroom. Place the soap dish on the toilet.,12.0,37.0,0,801.3305284976959,20000.0,1.0,1.0
+467,"Move the jug, kettle, and bread from the kitchen counter to the living room table. Place them next to each other.",5.0,33.0,0,117.83545970916748,1098.0,1.0,1.0
+215,Place the phone and the phone stand on the living room stand next to each other.,9.0,12.0,0,130.0949604511261,2323.0,1.0,1.0
+91,"I'll be re-organizing the office. Let's move the laptop, credit card, tray, sushi mat, and electronic cable to the living room for now.",5.0,38.0,0,807.6024050712585,20000.0,1.0,1.0
+349,"First, move the stuffed toy and toy pineapple from the dining room to the living room. Then, place them next to each other on the bed in bedroom.",29.0,10.0,0,203.98830389976501,3311.0,1.0,1.0
+48,Move the electric kettle from the kitchen to the entryway. Move the lamp from the living room to the entryway. Move the backpack from the bedroom to the entryway. Move the candle from the entryway to the living room.,5.0,39.0,0,663.5752131938934,20000.0,1.0,1.0
+753,"First, move the stuffed toy, then the doll, and finally the action figure from the living room table to the bedroom table. Place them next to each other.",11.0,34.0,0,540.48353266716,20000.0,1.0,1.0
