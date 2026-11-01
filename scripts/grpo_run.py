@@ -8,6 +8,8 @@
 - Trainer (this process, one GPU): bf16 Glimmer + LoRA (muse_habitat.grpo: packed sequences, clipped objective with the
   importance ratio against the logged log-probs). After each step: save <run>/adapters/p<n>, load it into the vLLM
   server, point <run>/policy at it, unload adapters older than the last <keep>.
+- Restart: --init <adapter dir> starts from that adapter (served as p0 from the start), --init-opt <file> from that
+  optimizer state; <run>/optimizer.pt holds the latest one.
 - Logs: <run>/train_log.jsonl (one line per step), <run>/groups.jsonl (every completed group, trained or not).
 
 The vLLM servers (scripts/glimmer_serve_lora.sh, with --max-lora-rank >= rank) must be up on <ports> (comma-separated;
@@ -138,6 +140,8 @@ def main():
     ap.add_argument("--keep", type=int, default=3, help="adapters kept loaded in vLLM")
     ap.add_argument("--remote", help="<host>:<dir> where the servers read adapters (rsync), if not this machine")
     ap.add_argument("--rsh", default="ssh", help="rsync's remote shell for --remote")
+    ap.add_argument("--init", help="LoRA adapter dir to start from")
+    ap.add_argument("--init-opt", help="optimizer state to start from (a run's optimizer.pt)")
     ap.add_argument("--save-every", type=int, default=0,
                     help="with --remote: delete local adapters once unloaded, except every <n>th (0: keep all)")
     a = ap.parse_args()
@@ -148,7 +152,20 @@ def main():
     eps = random.Random(a.seed).sample(pool, a.episodes)
     shards = [eps[j::a.shards] for j in range(a.shards)]
     json.dump({"args": vars(a), "shards": shards}, open(run / "config.json", "w"))
-    write_atomic(run / "policy", "glimmer\n")
+
+    def publish(name, path):
+        """Load adapter <path> into every server as <name> (copied there first with --remote)."""
+        if a.remote:
+            subprocess.run(["rsync", "-a", "--mkpath", "-e", a.rsh, f"{path}/", f"{a.remote}/{name}/"], check=True)
+            path = f"{a.remote.split(':', 1)[1]}/{name}"
+        for port in a.ports:
+            post(port, "/v1/load_lora_adapter", {"lora_name": name, "lora_path": str(path)})
+
+    loaded = []
+    if a.init:
+        publish("p0", Path(a.init).resolve())
+        loaded.append("p0")
+    write_atomic(run / "policy", ("p0" if a.init else "glimmer") + "\n")
     t_start = time.time()
     log = open(run / "train_log.jsonl", "a")
     glog = open(run / "groups.jsonl", "a")
@@ -164,19 +181,24 @@ def main():
     signal.signal(signal.SIGTERM, stop)
     signal.signal(signal.SIGINT, stop)
 
-    from peft import LoraConfig, get_peft_model
+    from peft import LoraConfig, PeftModel, get_peft_model
     from transformers import AutoModelForImageTextToText
     base = AutoModelForImageTextToText.from_pretrained(MODEL, dtype=torch.bfloat16, device_map="cuda:0")
     base.gradient_checkpointing_enable(gradient_checkpointing_kwargs={"use_reentrant": False})
     base.enable_input_require_grads()
-    model = get_peft_model(base, LoraConfig(r=a.rank, lora_alpha=2 * a.rank, target_modules=TARGETS))
+    if a.init:
+        model = PeftModel.from_pretrained(base, a.init, is_trainable=True)
+    else:
+        model = get_peft_model(base, LoraConfig(r=a.rank, lora_alpha=2 * a.rank, target_modules=TARGETS))
     model.train()
     tc = model.config.get_text_config()
     opt = torch.optim.AdamW([p for p in model.parameters() if p.requires_grad], lr=a.lr, betas=(0.9, 0.99),
                             weight_decay=0.0)
+    if a.init_opt:
+        opt.load_state_dict(torch.load(a.init_opt, map_location="cuda:0"))
     print(f"trainer ready {time.time() - t_start:.0f} s", flush=True)
 
-    consumed, pending, step, loaded = set(), [], 0, []
+    consumed, pending, step = set(), [], 0
     reader = TrajReader(run, a.reward)
     try:
         while step < a.steps and time.time() - t_start < a.hours * 3600:
@@ -210,20 +232,17 @@ def main():
                       episodes=[g[0].episode_id for g in batch], rewards=[[r.reward for r in g] for g in batch],
                       policies=sorted({m for g in batch for ro in g for m in ro.models}))
             name = f"p{step + 1}"
-            path = run / "adapters" / name
-            model.save_pretrained(path)
-            if a.remote:
-                subprocess.run(["rsync", "-a", "--mkpath", "-e", a.rsh, f"{path}/", f"{a.remote}/{name}/"], check=True)
-                path = f"{a.remote.split(':', 1)[1]}/{name}"
-            for port in a.ports:
-                post(port, "/v1/load_lora_adapter", {"lora_name": name, "lora_path": str(path)})
+            model.save_pretrained(run / "adapters" / name)
+            torch.save(opt.state_dict(), run / "optimizer.pt.tmp")
+            os.replace(run / "optimizer.pt.tmp", run / "optimizer.pt")
+            publish(name, run / "adapters" / name)
             write_atomic(run / "policy", name + "\n")
             loaded.append(name)
             while len(loaded) > a.keep:  # in-flight turns of older policies finish within the keep window
                 old = loaded.pop(0)
                 for port in a.ports:
                     post(port, "/v1/unload_lora_adapter", {"lora_name": old})
-                if a.remote and a.save_every and int(old[1:]) % a.save_every:
+                if a.remote and a.save_every and old != "p0" and int(old[1:]) % a.save_every:
                     shutil.rmtree(run / "adapters" / old)
             st["policy"] = name
             print(json.dumps(st), flush=True)
