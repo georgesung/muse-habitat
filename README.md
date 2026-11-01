@@ -11,6 +11,7 @@ per turn, reasoning strength low; `docs/reports/baseline.md`).
 | `src/muse_habitat/vllm_llm.py` | PARTNR LLM backend: the prompt string to vLLM's raw `/v1/completions`, planner grammar via structured outputs |
 | `src/muse_habitat/native_tools.py` | `NativeToolsPlanner`: PARTNR skills as Glimmer tools (ATEM calls), setups C and C1 |
 | `src/muse_habitat/results.py` | summarize `episode_result_log.csv` files (success, percent complete) |
+| `src/muse_habitat/splits.py`, `data/splits/` | train pool / dev split of PARTNR train, kept apart from val (excluded: the val scene, val instructions) |
 | `conf/llm`, `conf/instruct` | Hydra configs on PARTNR's search path (`glimmer_vllm_tools1` + `zero_shot_native_tools` = C1) |
 | `scripts/` | serve Glimmer / Llama, one run, sharded runs, full val, val_mini check |
 | `baselines/glimmer_c1_low_val/` | the full-val C1 low per-episode results (24 shards, 994 rows) |
