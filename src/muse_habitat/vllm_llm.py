@@ -10,6 +10,9 @@ channel (unconstrained, up to `thinking.max_tokens`), then the answer channel wi
 "grammar after reasoning" cannot do this for Glimmer: its reasoning parser only ends reasoning at a tool channel, never
 at a `to=user` answer. Thinking is not kept in the planner's history, as chat clients drop earlier reasoning.
 
+Policy file (for RL): with MUSE_POLICY_FILE set, each call reads the served model name (the current LoRA adapter) from
+that file, so a long-running process follows policy updates from its next turn on.
+
 Trajectory logging (for RL): with MUSE_TRAJ_DIR set, every completion call appends one JSON line to
 $MUSE_TRAJ_DIR/traj_<pid>.jsonl: `traj_meta` (set by the planner: episode, agent, turn), the prompt string, the
 generated text, vLLM's prompt and generated token ids, the sampled tokens' logprobs and the finish reason.
@@ -33,10 +36,22 @@ class VLLMCompletion(BaseLLM):
         self.calls = 0
         self.traj_meta = {}
         self.traj_dir = os.environ.get("MUSE_TRAJ_DIR")
+        self.policy_file = os.environ.get("MUSE_POLICY_FILE")
+
+    def _model(self):
+        if self.policy_file:
+            try:
+                with open(self.policy_file) as f:
+                    name = f.read().strip()
+                if name:
+                    return name
+            except OSError:
+                pass
+        return self.generation_params.engine
 
     def _complete(self, prompt, max_tokens, stop, grammar=None, keep_special=False):
         gp = self.generation_params
-        body = {"model": gp.engine, "prompt": prompt, "max_tokens": max_tokens, "temperature": gp.temperature,
+        body = {"model": self._model(), "prompt": prompt, "max_tokens": max_tokens, "temperature": gp.temperature,
                 "stop": stop}
         if keep_special:
             body["skip_special_tokens"] = False  # so special-token stop strings (<|eom|>) match

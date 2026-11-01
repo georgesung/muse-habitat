@@ -51,3 +51,21 @@ def test_objective_clips():
     loss, st = pack_objective(lp, torch.zeros(2), p)
     loss.backward()
     assert st["clipped"] == 1 and lp.grad[1] == 0 and lp.grad[0] == -1
+
+
+def test_traj_reader_incremental(tmp_path):
+    write_run(tmp_path, [{"a": 1.0, "b": 0.0}, {"a": 0.0, "b": 0.0}])
+    f = tmp_path / "traj_k0" / "traj_1.jsonl"
+    full = f.read_text()
+    f.write_text(full[: len(full) // 2])  # a partial last line, as while a process is writing
+    from muse_habitat.grpo import TrajReader
+    r = TrajReader(tmp_path)
+    r.poll()
+    f.write_text(full)
+    got = r.take(["a"])
+    ref = load_rollouts(tmp_path)
+    assert set(got) == {(0, "a"), (1, "a")}
+    for key, ro in got.items():
+        assert ro.reward == ref[key].reward and ro.agents.keys() == ref[key].agents.keys()
+        assert all(len(ro.agents[x]) == 3 for x in ro.agents)
+    assert not any(key[1] == "a" for key in r.out)

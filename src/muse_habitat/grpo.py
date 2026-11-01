@@ -37,6 +37,7 @@ class Rollout:
     success: float = math.nan
     agents: dict = field(default_factory=dict)  # agent uid -> [Turn] in turn order
     advantage: float = 0.0
+    models: set = field(default_factory=set)  # served model names (policy versions) that sampled its turns
 
 
 def reward_of(row, kind):
@@ -49,6 +50,33 @@ def reward_of(row, kind):
     raise ValueError(kind)
 
 
+def _add(out, k, r):
+    if r.get("token_ids") is None or r.get("grammar"):  # constrained fallback turns: context only
+        return
+    ro = out.setdefault((k, r["episode_id"]), Rollout(k, r["episode_id"]))
+    ro.agents.setdefault(r["agent"], []).append((r["turn"], Turn(r["prompt_token_ids"], r["token_ids"], r["logprobs"])))
+    ro.models.add(r.get("model"))
+
+
+def _finish(out, run_dir, reward, keys=None):
+    """Rewards from the result CSVs, turns in order; drops rollouts without a result row (PARTNR crashed)."""
+    for k in sorted({key[0] for key in out}):
+        for f in sorted(Path(run_dir).glob(f"k{k}_s*/results/episode_result_log.csv")):
+            for row in csv.DictReader(open(f)):
+                ro = out.get((k, row["episode_id"]))
+                if ro is not None:
+                    ro.reward, ro.success = reward_of(row, reward), float(row["task_state_success"])
+    done = {}
+    for key, ro in out.items():
+        if keys is not None and key not in keys:
+            continue
+        if isinstance(next(iter(ro.agents.values()), [None])[0], tuple):
+            ro.agents = {a: [t for _, t in sorted(ts, key=lambda x: x[0])] for a, ts in ro.agents.items()}
+        if not math.isnan(ro.reward):
+            done[key] = ro
+    return done
+
+
 def load_rollouts(run_dir, reward="success"):
     """{(sample, episode_id): Rollout} with rewards; rollouts without a result row (PARTNR crashed) are dropped."""
     run_dir = Path(run_dir)
@@ -57,20 +85,39 @@ def load_rollouts(run_dir, reward="success"):
         k = int(traj.name[len("traj_k"):])
         for f in sorted(traj.glob("*.jsonl")):
             for line in open(f):
-                r = json.loads(line)
-                if r.get("token_ids") is None or r.get("grammar"):  # constrained fallback turns: context only
-                    continue
-                ro = out.setdefault((k, r["episode_id"]), Rollout(k, r["episode_id"]))
-                ro.agents.setdefault(r["agent"], []).append((r["turn"], Turn(r["prompt_token_ids"], r["token_ids"],
-                                                                             r["logprobs"])))
-        for f in sorted(run_dir.glob(f"k{k}_s*/results/episode_result_log.csv")):
-            for row in csv.DictReader(open(f)):
-                ro = out.get((k, row["episode_id"]))
-                if ro is not None:
-                    ro.reward, ro.success = reward_of(row, reward), float(row["task_state_success"])
-    for ro in out.values():
-        ro.agents = {a: [t for _, t in sorted(ts, key=lambda x: x[0])] for a, ts in ro.agents.items()}
-    return {key: ro for key, ro in out.items() if not math.isnan(ro.reward)}
+                _add(out, k, json.loads(line))
+    return _finish(out, run_dir, reward)
+
+
+class TrajReader:
+    """Incremental reader of a running groups run: parses only lines appended since the last poll, holds the turns of
+    episodes not taken yet."""
+
+    def __init__(self, run_dir, reward="success"):
+        self.run_dir, self.reward = Path(run_dir), reward
+        self.offsets, self.out = {}, {}
+
+    def poll(self):
+        for traj in sorted(self.run_dir.glob("traj_k*")):
+            k = int(traj.name[len("traj_k"):])
+            for f in sorted(traj.glob("*.jsonl")):
+                with open(f) as fh:
+                    fh.seek(self.offsets.get(f, 0))
+                    while True:
+                        line = fh.readline()
+                        if not line.endswith("\n"):  # partial last line: read it next time
+                            break
+                        self.offsets[f] = fh.tell()
+                        _add(self.out, k, json.loads(line))
+
+    def take(self, episode_ids):
+        """{(sample, episode_id): Rollout} of these episodes (with rewards), removed from memory."""
+        self.poll()
+        keys = {key for key in self.out if key[1] in set(episode_ids)}
+        got = _finish({key: self.out[key] for key in keys}, self.run_dir, self.reward)
+        for key in keys:
+            del self.out[key]
+        return got
 
 
 def groups(rollouts, min_size=2, eps=1e-6):
