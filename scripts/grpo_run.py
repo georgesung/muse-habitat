@@ -8,8 +8,9 @@
 - Trainer (this process, one GPU): bf16 Glimmer + LoRA (muse_habitat.grpo: packed sequences, clipped objective with the
   importance ratio against the logged log-probs). After each step: save <run>/adapters/p<n>, load it into the vLLM
   server, point <run>/policy at it, unload adapters older than the last <keep>.
-- Restart: --init <adapter dir> starts from that adapter (served as p0 from the start), --init-opt <file> from that
-  optimizer state; <run>/optimizer.pt holds the latest one.
+- Restart: --init <adapter dir> starts from that adapter (served as p<start-step> from the start), --init-opt <file>
+  from that optimizer state (<run>/optimizer.pt holds the latest one); --start-step <n> continues the step count and
+  adapter names (p<n+1>, ...) of the run the adapter came from.
 - Logs: <run>/train_log.jsonl (one line per step), <run>/groups.jsonl (every completed group, trained or not).
 
 The vLLM servers (scripts/glimmer_serve_lora.sh, with --max-lora-rank >= rank) must be up on <ports> (comma-separated;
@@ -142,6 +143,7 @@ def main():
     ap.add_argument("--rsh", default="ssh", help="rsync's remote shell for --remote")
     ap.add_argument("--init", help="LoRA adapter dir to start from")
     ap.add_argument("--init-opt", help="optimizer state to start from (a run's optimizer.pt)")
+    ap.add_argument("--start-step", type=int, default=0, help="steps already taken (the --init adapter's number)")
     ap.add_argument("--save-every", type=int, default=0,
                     help="with --remote: delete local adapters once unloaded, except every <n>th (0: keep all)")
     a = ap.parse_args()
@@ -163,9 +165,9 @@ def main():
 
     loaded = []
     if a.init:
-        publish("p0", Path(a.init).resolve())
-        loaded.append("p0")
-    write_atomic(run / "policy", ("p0" if a.init else "glimmer") + "\n")
+        publish(f"p{a.start_step}", Path(a.init).resolve())
+        loaded.append(f"p{a.start_step}")
+    write_atomic(run / "policy", (f"p{a.start_step}" if a.init else "glimmer") + "\n")
     t_start = time.time()
     log = open(run / "train_log.jsonl", "a")
     glog = open(run / "groups.jsonl", "a")
@@ -198,7 +200,7 @@ def main():
         opt.load_state_dict(torch.load(a.init_opt, map_location="cuda:0"))
     print(f"trainer ready {time.time() - t_start:.0f} s", flush=True)
 
-    consumed, pending, step = set(), [], 0
+    consumed, pending, step = set(), [], a.start_step
     reader = TrajReader(run, a.reward)
     try:
         while step < a.steps and time.time() - t_start < a.hours * 3600:
@@ -242,7 +244,7 @@ def main():
                 old = loaded.pop(0)
                 for port in a.ports:
                     post(port, "/v1/unload_lora_adapter", {"lora_name": old})
-                if a.remote and a.save_every and old != "p0" and int(old[1:]) % a.save_every:
+                if a.remote and a.save_every and int(old[1:]) > a.start_step and int(old[1:]) % a.save_every:
                     shutil.rmtree(run / "adapters" / old)
             st["policy"] = name
             print(json.dumps(st), flush=True)
