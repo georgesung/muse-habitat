@@ -51,7 +51,8 @@ def reward_of(row, kind):
 
 
 def _add(out, k, r):
-    if r.get("token_ids") is None or r.get("grammar"):  # constrained fallback turns: context only
+    # constrained fallback turns: context only (its thinking step continues a to=self header the history drops)
+    if r.get("token_ids") is None or r.get("grammar") or not r["prompt"].endswith("<|start|>assistant"):
         return
     ro = out.setdefault((k, r["episode_id"]), Rollout(k, r["episode_id"]))
     ro.agents.setdefault(r["agent"], []).append((r["turn"], Turn(r["prompt_token_ids"], r["token_ids"], r["logprobs"])))
