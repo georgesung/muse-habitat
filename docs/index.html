@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Muse Glimmer + RL</title>
+<meta name="description" content="Reinforcement learning in simulation makes Muse Glimmer a better planner for a robot working alongside a person, in houses it has never seen.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="brand">Muse Glimmer + RL</div>
+    <nav>
+      <a href="#results">Results</a>
+      <a href="#how">How it works</a>
+      <a href="#videos">Videos</a>
+      <a href="#explorer">Explore all 1000 tasks</a>
+      <a href="#notes">Notes</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="top">
+  <div class="wrap">
+    <h1>Muse Glimmer + RL: teaching an open model to plan for a robot working alongside a person</h1>
+    <p class="lede">
+      Household robots will have to plan alongside people, in homes they have never seen. We took Meta's open-weight
+      Muse Glimmer 30B, made it the planner for both a Spot robot and a simulated human in Habitat 3.0 on the PARTNR
+      benchmark, and improved it with reinforcement learning in simulation: no human labels, only the reward for
+      finishing the task. Tested on 1000 tasks in 12 houses that were never used in training, the RL-tuned model
+      succeeds more often and finishes faster.
+    </p>
+    <div class="buttons">
+      <a class="btn primary" id="repo-link" href="#">Code on GitHub</a>
+      <a class="btn" id="hf-link" href="#">LoRA adapter on Hugging Face</a>
+      <a class="btn" href="#explorer">Browse every episode</a>
+    </div>
+
+    <div class="stats" id="results">
+      <div class="stat">
+        <div class="label">Val success, 1000 tasks, 12 unseen houses</div>
+        <div class="num">810 <small>/ 1000</small></div>
+        <div class="bars">
+          <div class="bar"><span>Original</span><span class="track"><span class="fill" style="width:78.2%;display:block"></span></span><span>782</span></div>
+          <div class="bar best"><span>RL p173</span><span class="track"><span class="fill" style="width:81%;display:block"></span></span><span>810</span></div>
+          <div class="bar"><span>RL p273</span><span class="track"><span class="fill" style="width:79.3%;display:block"></span></span><span>793</span></div>
+        </div>
+      </div>
+      <div class="stat">
+        <div class="label">Tasks with the same result on two independent runs: RL succeeds both times where the original fails both times, and vice versa</div>
+        <div class="num">25 <small>vs</small> 9</div>
+        <div class="label">sign test p = 0.009</div>
+      </div>
+      <div class="stat">
+        <div class="label">Episodes that run out of time (20,000 simulation steps)</div>
+        <div class="num">193 <small>→</small> 109</div>
+        <div class="label">median episode length 4,082 → 3,578 steps</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="demo">
+  <div class="wrap">
+    <h2>3-minute demo</h2>
+    <div class="video-frame" id="demo-video"><div class="soon">Demo video coming soon</div></div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <h2>How it works</h2>
+    <div class="how">
+      <div class="card"><h3>The task</h3><p>PARTNR household tasks in Habitat 3.0: a Spot robot and a simulated human share a house and must, for example, move objects, fill a kettle, or turn on a lamp. Neither starts out knowing where things are.</p></div>
+      <div class="card"><h3>The planner</h3><p>Muse Glimmer plans for both agents. Each turn it thinks, then calls one tool in its native tool-calling format (Explore, Navigate, Pick, Place, Rearrange, Open, Fill, PowerOn, Done, ...). PARTNR's built-in skills carry out the motion.</p></div>
+      <div class="card"><h3>The learning</h3><p>GRPO with a LoRA adapter: each training task is played 8 times at temperature 1; the reward is task success, shared by both agents; attempts that beat the group average are reinforced. 34 training houses; checkpoints chosen on 3 held-out houses.</p></div>
+      <div class="card"><h3>The system</h3><p>Rollouts run in Habitat on one machine while vLLM serves Glimmer with the current adapter (and speculative decoding with Glimmer's assistant model) on another; each new adapter is loaded live. A whole episode's turns train as one packed sequence, 12.7x cheaper than one sequence per turn.</p></div>
+    </div>
+    <p class="note">Everything here was built during the hackathon (Oct 29 &ndash; Nov 4, 2026): Muse Glimmer as a native-tool-calling PARTNR planner (the 782 / 1000 baseline), the RL pipeline (rollouts, GRPO trainer, turn packing, live adapter serving), the training runs, and the evaluations on this page.</p>
+  </div>
+</section>
+
+<section id="videos">
+  <div class="wrap">
+    <h2>Featured episodes</h2>
+    <p class="note" style="margin-top:0;margin-bottom:16px">Original Glimmer on top, RL (p173) below. Each frame shows the robot's view on the left and the human's on the right; the action each agent is running is written on the frame.</p>
+    <div class="grid-videos" id="video-grid"></div>
+  </div>
+</section>
+
+<section id="explorer">
+  <div class="wrap">
+    <h2>Explore all 1000 val tasks</h2>
+    <p class="note" style="margin-top:0;margin-bottom:16px">Every PARTNR val episode with each model's result and its full turn-by-turn reasoning. Categories use the re-run check (two runs per model) where available.</p>
+    <div class="filters">
+      <label class="search">Search instructions<input id="f-search" type="search" placeholder="e.g. kettle, lamp, toy"></label>
+      <label>Category<select id="f-cat"></select></label>
+      <label>House<select id="f-house"></select></label>
+      <label>Original<select id="f-orig"><option value="">any</option><option value="1">success</option><option value="0">fail</option></select></label>
+      <label>RL p173<select id="f-p173"><option value="">any</option><option value="1">success</option><option value="0">fail</option></select></label>
+    </div>
+    <div class="count" id="count"></div>
+    <div class="table" id="table"></div>
+    <div class="pager" id="pager"></div>
+  </div>
+</section>
+
+<section id="notes">
+  <div class="wrap">
+    <h2>Notes</h2>
+    <ul class="notes">
+      <li>Each val number is one greedy run per episode; a crash counts as a failure. Greedy runs are not bit-reproducible here, so we re-ran the 196 episodes where the models disagreed (plus 20 where they agreed) once more per model. All 60 agreeing re-runs reproduced; about a third to a half of the disagreements flipped. Averaging those episodes over both runs gives original 796, RL p173 820.5, RL p273 799.</li>
+      <li>More training is not automatically better: checkpoint p273 (100 updates after p173) scored 793. Its episodes got shorter still, but outright failures went back up; p173 is the model we release.</li>
+      <li>Low-level motion is idealized in simulation: the robot slides along the floor plan instead of walking, and grasps snap the object to the gripper. The model is responsible for the high-level plan: what to do, where, and which agent does it.</li>
+      <li>The original and the RL model use the same prompts, tools and decoding settings; only the LoRA adapter differs.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">Muse Glimmer 30B (Meta open weights) · Habitat 3.0 · PARTNR benchmark · <a id="repo-link-2" href="#">source</a></div>
+</footer>
+
+<dialog id="dlg">
+  <div class="dlg-head"><h3 id="dlg-title"></h3><button class="btn" id="dlg-close" type="button">Close</button></div>
+  <div class="dlg-body" id="dlg-body"></div>
+</dialog>
+
+<script src="app.js"></script>
+</body>
+</html>
