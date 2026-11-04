@@ -1,7 +1,7 @@
 // Fill these in before publishing.
 const CONFIG = {
-  REPO_URL: "",        // e.g. https://github.com/<user>/muse-habitat
-  HF_URL: "",          // e.g. https://huggingface.co/<user>/<adapter>
+  REPO_URL: "https://github.com/georgesung/muse-habitat",
+  HF_URL: "https://huggingface.co/georgesung/Muse-Glimmer-30B-Habitat-PARTNR-Lora",
   DEMO_VIDEO_ID: "",   // YouTube video id of the 3-minute demo
 };
 

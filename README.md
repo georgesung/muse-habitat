@@ -6,8 +6,8 @@ work. This project takes **Muse Glimmer 30B** (Meta open weights), makes it the 
 realistic homes from a natural-language task), and improves it with **reinforcement learning in simulation**: no human
 demonstrations or labels, only "did the task get done".
 
-**Project page (videos, explorer of all 1000 test episodes):** `<GitHub Pages URL>` ·
-**3-minute demo:** `<YouTube URL>` · **LoRA adapter:** `<Hugging Face URL>`
+**Project page (videos, explorer of all 1000 test episodes):** https://georgesung.github.io/muse-habitat/ ·
+**3-minute demo:** `<YouTube URL>` · **LoRA adapter:** https://huggingface.co/georgesung/Muse-Glimmer-30B-Habitat-PARTNR-Lora
 
 ## Results
 
