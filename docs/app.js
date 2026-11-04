@@ -74,6 +74,8 @@ function renderVideos() {
       el("h3", { text: v.title }),
       ep ? el("div", { class: "meta" }, el("span", { class: "tag", text: "Original" }), outcome(ep.original),
         el("span", { class: "tag", text: "Glimmer + RL" }), outcome(ep.rl)) : null,
+      v.why_original ? el("p", { class: "why" }, el("strong", { text: "Original: " }), v.why_original) : null,
+      v.why_rl ? el("p", { class: "why" }, el("strong", { text: "Glimmer + RL: " }), v.why_rl) : null,
       el("button", { class: "btn", type: "button", text: `Episode ${id}: reasoning, turn by turn`, onclick: () => openEpisode(Number(id)) }));
     grid.append(el("div", { class: "vcard" }, frame, body));
   }
