@@ -176,7 +176,7 @@ async function openEpisode(id) {
   const parts = [el("div", { class: "meta" }, el("span", { class: `tag ${e.category}`, text: CATS[e.category] || e.category })), cards];
   const v = VIDEOS.find((x) => x.id === id);
   const yt = v && v.youtube && (v.youtube.stacked || v.youtube.rl || v.youtube.original);
-  if (yt) parts.push(el("div", { class: "video-frame", style: "aspect-ratio:1/1;max-width:560px;margin:0 auto 14px" }, youtube(yt, v.title)));
+  if (yt) parts.push(el("div", { class: "video-frame", style: "aspect-ratio:16/9;max-width:720px;margin:0 auto 14px" }, youtube(yt, v.title)));
   const runs = Object.keys(data.runs);
   const label = (k) => k.replace(/^original/, MODELS.original).replace(/^rl_longer/, MODELS.rl_longer).replace(/^rl/, MODELS.rl);
   const col = (initial) => {
