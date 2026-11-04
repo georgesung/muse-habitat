@@ -11,7 +11,7 @@ demonstrations or labels, only "did the task get done".
 
 ## Results
 
-PARTNR val: 1000 tasks in 12 houses that never appear in training (no public test split exists, so val is our test
+PARTNR val: 1000 tasks in 12 houses that never appear in training (no public test split exists, so val is my test
 set; the released adapter was chosen on a dev split of PARTNR train before its val run).
 
 | Planner | Success (of 1000) | Share of task conditions done | Episodes at the 20,000-step limit |
@@ -21,7 +21,7 @@ set; the released adapter was chosen on a dev split of PARTNR train before its v
 
 - **Paired on the same 1000 tasks**, RL vs the original: +2.8 points (SE 1.1); better on 76 tasks, worse on 48;
   sign test p = 0.015. Better in 9 of the 12 houses.
-- **Re-run check.** Each number above is one greedy run per task, and greedy runs are not exactly reproducible. We
+- **Re-run check.** Each number above is one greedy run per task, and greedy runs are not exactly reproducible. I
   re-ran the 196 tasks where the models disagreed, plus 20 where they agreed. Agreeing tasks reproduced 60/60; among
   tasks with the same result on both runs, **RL beats the original on 25 and loses on 9 (p = 0.009)**. With the re-run
   averaged in: original 796, RL 820.5.
@@ -30,7 +30,7 @@ set; the released adapter was chosen on a dev split of PARTNR train before its v
 
 ![Headline results](docs/assets/headline_chart.png)
 
-## What we built (all during the hackathon, Oct 29 – Nov 4, 2026)
+## What I built (all during the hackathon, Oct 29 – Nov 4, 2026)
 
 1. **Glimmer as a native PARTNR planner** (`src/muse_habitat/native_tools.py`, `vllm_llm.py`): PARTNR's skills
    (navigate, explore, pick, place, rearrange, clean, fill, power on/off, ...) exposed as Glimmer tools. Each turn the
@@ -66,7 +66,7 @@ each other. All either one sees is things like "book_0: held by the other agent"
 what. The reward is shared, so only teamwork pays. On a real robot, only the robot's side would ship; the partner is a
 training tool.
 
-The results above are for the whole team, with both agents running the adapter. We have not measured the robot's share
+The results above are for the whole team, with both agents running the adapter. I have not measured the robot's share
 on its own, and the partner was always simulated: working with real people is the next step.
 
 ## How it works
@@ -129,7 +129,7 @@ the same run continued. The number is a step counter that leaves out the first 2
 | Episodes at the 20,000-step limit | 109 | 99 |
 
 The extra 100 updates at the same settings drifted (policy entropy roughly tripled) and gave back most of the gain:
-after the re-run check `p273` is not better than the original (13 wins, 16 losses), so we release `p173`.
+after the re-run check `p273` is not better than the original (13 wins, 16 losses), so I release `p173`.
 
 ## License
 

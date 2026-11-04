@@ -10,7 +10,7 @@ This is the baseline the RL work starts from.
 
 ## Setup
 
-- PARTNR = facebookresearch/partnr-planner `ddfff19`, unmodified; our backends and planner live in `src/muse_habitat/`
+- PARTNR = facebookresearch/partnr-planner `ddfff19`, unmodified; my backends and planner live in `src/muse_habitat/`
   and `conf/`, on PYTHONPATH and the Hydra search path via `scripts/partnr_run.sh`. PARTNR's Python 3.9 env with
   habitat-sim 0.3.3 (headless + Bullet) and torch 2.7.1+cu128.
 - Config: `baselines/decentralized_zero_shot_react_summary.yaml`: each agent has its own planner, partial
@@ -47,13 +47,13 @@ cannot separate setups one or two episodes apart; the 10/10 did not survive 50.
 C1 was kept: it is the model's native interface (thinking, then one tool call), needs no grammar, and its calls were
 all well formed (1,727 calls on 40 more episodes, no fallback).
 
-For reference, Llama 3.1 8B Instruct (ReAct, our vLLM backend) does 8/10 on the 10-episode set.
+For reference, Llama 3.1 8B Instruct (ReAct, my vLLM backend) does 8/10 on the 10-episode set.
 
 ## Full val, Glimmer C1 low (2026-10-31 / 11-01)
 
 **782 / 1000 succeed (0.782), 0.871 of the propositions done on average.** The paper's full-val numbers
 (decentralized, partial observability, oracle skills): ReAct Llama-3.1-70B 0.73, ReAct 8B 0.64, fine-tuned 8B 0.70,
-humans 0.93. Our harness is not identical to the paper's (our serving path, batched greedy decoding), so this is a
+humans 0.93. My harness is not identical to the paper's (my serving path, batched greedy decoding), so this is a
 comparison, not a reproduction. Per-episode results: `baselines/glimmer_c1_low_val/`.
 
 - **6 episodes (113, 282, 628, 644, 836, 837) crashed in PARTNR** with `'NoneType' object has no attribute
@@ -66,7 +66,7 @@ comparison, not a reproduction. Per-episode results: `baselines/glimmer_c1_low_v
 - **Cost:** median 279 s per episode, 38 replans on average for the two agents together.
 - val_mini is slightly easier than val (0.80 vs 0.78 on the same run).
 
-## What we learned
+## What I learned
 
 - For a thinking, tool-trained model the native interface is a single generation: reasoning channel, then a tool
   call. Grammar constraints were not needed.

@@ -12,7 +12,7 @@ out="$root/runs/$name"
 mkdir -p "$out"
 cd "$PARTNR_DIR"
 export CUDA_VISIBLE_DEVICES=$gpu WANDB_MODE=disabled HF_HUB_OFFLINE=1 HYDRA_FULL_ERROR=1 PYTHONUNBUFFERED=1
-# Our backends (src/muse_habitat) and llm / instruct configs (conf/)
+# This project's backends (src/muse_habitat) and llm / instruct configs (conf/)
 export PYTHONPATH="$root/src${PYTHONPATH:+:$PYTHONPATH}"
 "$PARTNR_ENV/bin/python" -m habitat_llm.examples.planner_demo --config-name "$cfg" \
     habitat.dataset.data_path=data/datasets/partnr_episodes/v0_0/$split.json.gz \
