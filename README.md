@@ -107,7 +107,7 @@ Needs PARTNR (`facebookresearch/partnr-planner`, unmodified, with its data and i
 Glimmer weights in the Hugging Face cache; see `scripts/env.sh` and `scripts/setup_envs.sh`.
 
 ```
-TP=2 DFLASH=1 scripts/glimmer_serve_lora.sh 0,1 8021        # Glimmer + DFlash + LoRA serving on 2 GPUs
+TP=2 DFLASH=1 scripts/glimmer_serve_lora.sh 0,1 8021        # Glimmer + DFlash + LoRA serving
 curl -X POST localhost:8021/v1/load_lora_adapter -H 'Content-Type: application/json' \
      -d '{"lora_name": "glimmer-rl", "lora_path": "<adapter dir>"}'
 SPLIT=val scripts/dev_eval.sh val_rl 0,1 8021,8021 glimmer-rl   # full val with the adapter
