@@ -12,22 +12,19 @@ demonstrations or labels, only "did the task get done".
 ## Results
 
 PARTNR val: 1000 tasks in 12 houses that never appear in training (no public test split exists, so val is our test
-set; checkpoints were picked on held-out training houses).
+set; the released adapter was chosen on a dev split of PARTNR train before its val run).
 
 | Planner | Success (of 1000) | Share of task conditions done | Episodes at the 20,000-step limit |
 |---|---|---|---|
 | Muse Glimmer 30B | 782 | 0.871 | 193 |
-| **Muse Glimmer 30B + RL (adapter `p173`, 173 updates)** | **810** | **0.893** | **109** |
-| + RL, 100 more updates (`p273`) | 793 | 0.876 | 99 |
+| **Muse Glimmer 30B + RL** | **810** | **0.893** | **109** |
 
-- **Paired on the same 1000 tasks**, p173 vs the original: +2.8 points (SE 1.1); better on 76 tasks, worse on 48;
+- **Paired on the same 1000 tasks**, RL vs the original: +2.8 points (SE 1.1); better on 76 tasks, worse on 48;
   sign test p = 0.015. Better in 9 of the 12 houses.
 - **Re-run check.** Each number above is one greedy run per task, and greedy runs are not exactly reproducible. We
-  re-ran the 196 tasks where the three models disagreed, plus 20 where they agreed. Agreeing tasks reproduced 60/60;
-  among tasks with the same result on both runs, **p173 beats the original on 25 and loses on 9 (p = 0.009)**. With
-  the re-run averaged in: original 796, p173 820.5, p273 799.
-- Training longer at the same settings drifted (policy entropy roughly tripled) and gave back most of the gain:
-  p273 is not better than the original after the re-run check. p173 is the released checkpoint.
+  re-ran the 196 tasks where the models disagreed, plus 20 where they agreed. Agreeing tasks reproduced 60/60; among
+  tasks with the same result on both runs, **RL beats the original on 25 and loses on 9 (p = 0.009)**. With the re-run
+  averaged in: original 796, RL 820.5.
 - For reference, the PARTNR paper reports 0.73 for its ReAct Llama-3.1-70B planner and 0.93 for humans (on its own
   setup, so not strictly comparable).
 
@@ -101,10 +98,27 @@ Glimmer weights in the Hugging Face cache; see `scripts/env.sh` and `scripts/set
 ```
 TP=2 DFLASH=1 scripts/glimmer_serve_lora.sh 0,1 8021        # Glimmer + DFlash + LoRA serving on 2 GPUs
 curl -X POST localhost:8021/v1/load_lora_adapter -H 'Content-Type: application/json' \
-     -d '{"lora_name": "p173", "lora_path": "<adapter dir>"}'
-SPLIT=val scripts/dev_eval.sh val_p173 0,1 8021,8021 p173   # full val with the adapter
+     -d '{"lora_name": "glimmer-rl", "lora_path": "<adapter dir>"}'
+SPLIT=val scripts/dev_eval.sh val_rl 0,1 8021,8021 glimmer-rl   # full val with the adapter
 python3 scripts/grpo_run.py <run name> --port 8021 ...      # training; see the script's arguments
 ```
+
+## Details: how long to train, and the names `p173` / `p273`
+
+Training saved numbered adapters as it went. Two were run on val, and the names only mean something side by side (you
+will see them in run directories): `p173` is the released adapter, the "+ RL" model everywhere above, and `p273` is
+the same run continued. The number is a step counter that leaves out the first 27 updates, so it is not the update count.
+
+| | `p173` (released) | `p273` |
+|---|---|---|
+| GRPO updates | 200 | 300 |
+| Val success (of 1000) | 810 | 793 |
+| With re-runs averaged in | 820.5 | 799 |
+| Share of task conditions done | 0.893 | 0.876 |
+| Episodes at the 20,000-step limit | 109 | 99 |
+
+The extra 100 updates at the same settings drifted (policy entropy roughly tripled) and gave back most of the gain:
+after the re-run check `p273` is not better than the original (13 wins, 16 losses), so we release `p173`.
 
 ## License
 

@@ -13,7 +13,7 @@ const CATS = {
   all_fail: "All models fail",
   story: "Story",
 };
-const MODELS = { original: "Original Glimmer", p173: "RL p173", p273: "RL p273" };
+const MODELS = { original: "Original Glimmer", rl: "Glimmer + RL", rl_longer: "RL, trained longer" };
 const PAGE = 50;
 
 let EPISODES = [];
@@ -64,7 +64,7 @@ function renderVideos() {
     const id = v.id;
     const ep = byId[id];
     const frame = el("div", { class: "video-frame" });
-    const yt = (v.youtube && (v.youtube.stacked || v.youtube.p173 || v.youtube.original)) || "";
+    const yt = (v.youtube && (v.youtube.stacked || v.youtube.rl || v.youtube.original)) || "";
     frame.append(yt ? youtube(yt, v.title) : el("div", { class: "soon", text: "Video coming soon" }));
     const meta = el("div", { class: "meta" }, el("span", { class: `tag ${v.category}`, text: CATS[v.category] || v.category }));
     if (ep) {
@@ -74,7 +74,7 @@ function renderVideos() {
       meta,
       el("h3", { text: v.title }),
       ep ? el("div", { class: "meta" }, el("span", { class: "tag", text: "Original" }), outcome(ep.original),
-        el("span", { class: "tag", text: "RL p173" }), outcome(ep.p173)) : null,
+        el("span", { class: "tag", text: "Glimmer + RL" }), outcome(ep.rl)) : null,
       el("button", { class: "btn", type: "button", text: `Episode ${id}: reasoning, turn by turn`, onclick: () => openEpisode(Number(id)) }));
     grid.append(el("div", { class: "vcard" }, frame, body));
   }
@@ -92,7 +92,7 @@ function initFilters() {
   house.append(el("option", { value: "", text: "any" }));
   const hs = [...new Set(EPISODES.map((e) => e.house))].sort((a, b) => a - b);
   for (const h of hs) house.append(el("option", { value: String(h), text: `House ${h}` }));
-  for (const id of ["f-search", "f-cat", "f-house", "f-orig", "f-p173"]) {
+  for (const id of ["f-search", "f-cat", "f-house", "f-orig", "f-rl"]) {
     document.getElementById(id).addEventListener("input", () => { page = 0; applyFilters(); });
   }
 }
@@ -102,12 +102,12 @@ function applyFilters() {
   const cat = document.getElementById("f-cat").value;
   const house = document.getElementById("f-house").value;
   const fo = document.getElementById("f-orig").value;
-  const fp = document.getElementById("f-p173").value;
+  const fp = document.getElementById("f-rl").value;
   const ok = (r, want) => want === "" || (want === "1" ? r.success === true : r.success !== true);
   filtered = EPISODES.filter((e) =>
     (!q || e.instruction.toLowerCase().includes(q) || String(e.id) === q) &&
     (!cat || e.category === cat) && (!house || String(e.house) === house) &&
-    ok(e.original, fo) && ok(e.p173, fp));
+    ok(e.original, fo) && ok(e.rl, fp));
   renderTable();
 }
 
@@ -117,16 +117,16 @@ function renderTable() {
   page = Math.min(page, pages - 1);
   document.getElementById("count").textContent =
     `${filtered.length} episode${filtered.length === 1 ? "" : "s"}` +
-    (filtered.length ? `; RL p173 succeeds on ${filtered.filter((e) => e.p173.success).length}, original on ${filtered.filter((e) => e.original.success).length}` : "");
+    (filtered.length ? `; Glimmer + RL succeeds on ${filtered.filter((e) => e.rl.success).length}, original on ${filtered.filter((e) => e.original.success).length}` : "");
   const head = el("div", { class: "row head" },
     el("span", { text: "#" }), el("span", { class: "house", text: "House" }), el("span", { class: "instr", text: "Instruction" }),
-    el("span", { text: "Original" }), el("span", { text: "RL p173" }), el("span", { text: "RL p273" }), el("span", { class: "cat", text: "Category" }));
+    el("span", { text: "Original" }), el("span", { text: "Glimmer + RL" }), el("span", { text: "RL, trained longer" }), el("span", { class: "cat", text: "Category" }));
   const rows = filtered.slice(page * PAGE, (page + 1) * PAGE).map((e) =>
     el("div", { class: "row", role: "button", tabindex: "0", onclick: () => openEpisode(e.id),
       onkeydown: (ev) => { if (ev.key === "Enter") openEpisode(e.id); } },
       el("span", { text: String(e.id) }), el("span", { class: "house", text: String(e.house) }),
       el("span", { class: "instr", text: e.instruction, title: e.instruction }),
-      outcome(e.original), outcome(e.p173), outcome(e.p273),
+      outcome(e.original), outcome(e.rl), outcome(e.rl_longer),
       el("span", { class: "cat" }, el("span", { class: `tag ${e.category}`, text: CATS[e.category] || e.category }))));
   t.replaceChildren(head, ...rows);
   const pager = document.getElementById("pager");
@@ -174,10 +174,10 @@ async function openEpisode(id) {
   if (e.recheck) for (const m of Object.keys(MODELS)) cards.append(stat(`${MODELS[m]} (re-run)`, e.recheck[m]));
   const parts = [el("div", { class: "meta" }, el("span", { class: `tag ${e.category}`, text: CATS[e.category] || e.category })), cards];
   const v = VIDEOS.find((x) => x.id === id);
-  const yt = v && v.youtube && (v.youtube.stacked || v.youtube.p173 || v.youtube.original);
+  const yt = v && v.youtube && (v.youtube.stacked || v.youtube.rl || v.youtube.original);
   if (yt) parts.push(el("div", { class: "video-frame", style: "aspect-ratio:1/1;max-width:560px;margin:0 auto 14px" }, youtube(yt, v.title)));
   const runs = Object.keys(data.runs);
-  const label = (k) => k.replace(/^original/, MODELS.original).replace(/^p173/, MODELS.p173).replace(/^p273/, MODELS.p273);
+  const label = (k) => k.replace(/^original/, MODELS.original).replace(/^rl_longer/, MODELS.rl_longer).replace(/^rl/, MODELS.rl);
   const col = (initial) => {
     const sel = el("select", {});
     for (const k of runs) sel.append(el("option", { value: k, text: `${label(k)} (${data.runs[k].length} turns)` }));
@@ -188,7 +188,7 @@ async function openEpisode(id) {
     draw();
     return el("div", { class: "col" }, sel, list);
   };
-  parts.push(el("div", { class: "cols" }, col("original"), col("p173")));
+  parts.push(el("div", { class: "cols" }, col("original"), col("rl")));
   body.replaceChildren(...parts);
 }
 

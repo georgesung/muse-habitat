@@ -44,8 +44,7 @@
         <div class="num">810 <small>/ 1000</small></div>
         <div class="bars">
           <div class="bar"><span>Original</span><span class="track"><span class="fill" style="width:78.2%;display:block"></span></span><span>782</span></div>
-          <div class="bar best"><span>RL p173</span><span class="track"><span class="fill" style="width:81%;display:block"></span></span><span>810</span></div>
-          <div class="bar"><span>RL p273</span><span class="track"><span class="fill" style="width:79.3%;display:block"></span></span><span>793</span></div>
+          <div class="bar best"><span>Glimmer + RL</span><span class="track"><span class="fill" style="width:81%;display:block"></span></span><span>810</span></div>
         </div>
       </div>
       <div class="stat">
@@ -85,7 +84,7 @@
 <section id="videos">
   <div class="wrap">
     <h2>Featured episodes</h2>
-    <p class="note" style="margin-top:0;margin-bottom:16px">Original Glimmer on top, RL (p173) below. Each frame shows the robot's view on the left and the human's on the right; the action each agent is running is written on the frame.</p>
+    <p class="note" style="margin-top:0;margin-bottom:16px">Original Glimmer on top, Glimmer + RL below. Each frame shows the robot's view on the left and the human's on the right; the action each agent is running is written on the frame.</p>
     <div class="grid-videos" id="video-grid"></div>
   </div>
 </section>
@@ -99,7 +98,7 @@
       <label>Category<select id="f-cat"></select></label>
       <label>House<select id="f-house"></select></label>
       <label>Original<select id="f-orig"><option value="">any</option><option value="1">success</option><option value="0">fail</option></select></label>
-      <label>RL p173<select id="f-p173"><option value="">any</option><option value="1">success</option><option value="0">fail</option></select></label>
+      <label>Glimmer + RL<select id="f-rl"><option value="">any</option><option value="1">success</option><option value="0">fail</option></select></label>
     </div>
     <div class="count" id="count"></div>
     <div class="table" id="table"></div>
@@ -111,8 +110,8 @@
   <div class="wrap">
     <h2>Notes</h2>
     <ul class="notes">
-      <li>Each val number is one greedy run per episode; a crash counts as a failure. Greedy runs are not bit-reproducible here, so we re-ran the 196 episodes where the models disagreed (plus 20 where they agreed) once more per model. All 60 agreeing re-runs reproduced; about a third to a half of the disagreements flipped. Averaging those episodes over both runs gives original 796, RL p173 820.5, RL p273 799.</li>
-      <li>More training is not automatically better: checkpoint p273 (100 updates after p173) scored 793. Its episodes got shorter still, but outright failures went back up; p173 is the model we release.</li>
+      <li>Each val number is one greedy run per episode; a crash counts as a failure. Greedy runs are not bit-reproducible here, so we re-ran the 196 episodes where the models disagreed (plus 20 where they agreed) once more per model. All 60 agreeing re-runs reproduced; about a third to a half of the disagreements flipped. Averaging those episodes over both runs gives original 796, Glimmer + RL 820.5.</li>
+      <li>More training is not automatically better: Glimmer + RL is the adapter after 200 updates. Training 100 updates longer at the same settings (the "RL, trained longer" column in the explorer) scored 793, or 799 with re-runs averaged in. Its episodes got shorter still, but outright failures went back up, so we release the 200-update adapter.</li>
       <li>Low-level motion is idealized in simulation: the robot slides along the floor plan instead of walking, and grasps snap the object to the gripper. The model is responsible for the high-level plan: what to do, where, and which agent does it.</li>
       <li>The original and the RL model use the same prompts, tools and decoding settings; only the LoRA adapter differs.</li>
     </ul>

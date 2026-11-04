@@ -16,8 +16,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 ANSI = re.compile(r"\x1b\[[0-9;]*m")
-RUNS = {"p173": "runs/val_r3p173_h*_s*", "p273": "runs/val_r5p273_h*_s*"}
-RECHECK = {"original": "runs/recheck_glimmer_h*_s*", "p173": "runs/recheck_p173_h*_s*", "p273": "runs/recheck_p273_h*_s*"}
+# rl: the released adapter (run dirs say p173); rl_longer: 100 more updates (p273). README "Details" explains the names.
+RUNS = {"rl": "runs/val_r3p173_h*_s*", "rl_longer": "runs/val_r5p273_h*_s*"}
+RECHECK = {"original": "runs/recheck_glimmer_h*_s*", "rl": "runs/recheck_p173_h*_s*",
+           "rl_longer": "runs/recheck_p273_h*_s*"}
 MAX_RESULT = 400
 
 
@@ -148,29 +150,29 @@ def main():
         s = lambda m, R=res: (R[m].get(i) or {}).get("success", False)  # crash = fail
         row = {"id": i, "instruction": e["instruction"].strip(), "house": houses[e["scene_id"]],
                "scene": e["scene_id"]}
-        for m in ("original", "p173", "p273"):
+        for m in ("original", "rl", "rl_longer"):
             row[m] = res[m].get(i) or {"success": None, "crashed": True}
         if i in rechecked:
             row["recheck"] = {m: (rres[m].get(i) or {"success": None, "crashed": True}) for m in RECHECK}
             o2 = [s("original"), s("original", rres)]
-            p2 = [s("p173"), s("p173", rres)]
+            p2 = [s("rl"), s("rl", rres)]
             if o2 == [False, False] and p2 == [True, True]:
                 cat = "rl_win"
             elif o2 == [True, True] and p2 == [False, False]:
                 cat = "rl_loss"
-            elif all(o2 + p2) and s("p273") and s("p273", rres):
+            elif all(o2 + p2) and s("rl_longer") and s("rl_longer", rres):
                 cat = "all_success"
-            elif not any(o2 + p2 + [s("p273"), s("p273", rres)]):
+            elif not any(o2 + p2 + [s("rl_longer"), s("rl_longer", rres)]):
                 cat = "all_fail"
             else:
                 cat = "noisy"
         else:
-            v = [s("original"), s("p173"), s("p273")]
+            v = [s("original"), s("rl"), s("rl_longer")]
             cat = "all_success" if all(v) else "all_fail" if not any(v) else "disagree"
         row["category"] = cat
         rows.append(row)
         ep = {"id": i, "instruction": row["instruction"], "runs": {}}
-        for m in ("original", "p173", "p273"):
+        for m in ("original", "rl", "rl_longer"):
             if i in tr[m]:
                 ep["runs"][m] = tr[m][i]
             else:
@@ -185,7 +187,7 @@ def main():
     for r in rows:
         cats[r["category"]] = cats.get(r["category"], 0) + 1
     print("categories", cats)
-    print("success", {m: sum(1 for r in rows if r[m].get("success")) for m in ("original", "p173", "p273")})
+    print("success", {m: sum(1 for r in rows if r[m].get("success")) for m in ("original", "rl", "rl_longer")})
     print("transcript gaps", len(gaps), gaps[:20])
 
 
