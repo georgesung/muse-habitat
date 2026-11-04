@@ -58,6 +58,7 @@
         <div class="label">median episode length 4,082 → 3,578 steps</div>
       </div>
     </div>
+    <img class="figure" src="assets/headline_chart.png" alt="Bar charts: success 782 to 810 of 1000, consistent differences 25 to 9, episodes out of time 193 to 109" loading="lazy">
   </div>
 </section>
 
@@ -71,6 +72,7 @@
 <section id="how">
   <div class="wrap">
     <h2>How it works</h2>
+    <img class="figure" src="assets/rl_loop_diagram.png" alt="The RL loop: a PARTNR task goes to Muse Glimmer 30B, which sends tool calls to Habitat 3.0 and gets observations back; finished attempts get a reward, GRPO updates the LoRA adapter, and the new adapter is loaded live" loading="lazy">
     <div class="card" style="margin-bottom:16px"><h3>Practicing with a stand-in partner</h3><p>A robot can't practice thousands of chores with real people, so Glimmer practices with a simulated partner played by a copy of itself: self-play. The two agents plan separately, each from its own partial view, and have no way to message each other, so each has to work out who is doing what from what it observes. The reward is shared, so only teamwork pays. On a real robot, only the robot's side would ship; the partner is a training tool. The results on this page are for the whole team, with both agents running the adapter, and the partner was always simulated: working with real people is the next step.</p></div>
     <div class="how">
       <div class="card"><h3>The task</h3><p>PARTNR household tasks in Habitat 3.0: a Spot robot and a simulated human share a house and must, for example, move objects, fill a kettle, or turn on a lamp. Neither starts out knowing where things are.</p></div>

@@ -71,14 +71,7 @@ on its own, and the partner was always simulated: working with real people is th
 
 ## How it works
 
-```
- PARTNR task ("Move the jug and cup to the kitchen and fill the jug")
-        │
- Habitat 3.0 house ──observations──▶ Muse Glimmer (robot) ──tool call──▶ PARTNR skills ──▶ simulator
-                   ──observations──▶ Muse Glimmer (human) ──tool call──▶ PARTNR skills ──▶ simulator
-        │
- task success (0/1) for 8 rollouts of the same task ──▶ GRPO update of a LoRA adapter ──▶ served to the next rollouts
-```
+![The RL loop: PARTNR task, Muse Glimmer, Habitat, reward, GRPO update, new adapter](docs/assets/rl_loop_diagram.png)
 
 Low-level motion is idealized in PARTNR (the robot base slides along the navigation mesh, grasps snap); the model's
 job is the high-level plan: what to look for, where things go, who does what.
