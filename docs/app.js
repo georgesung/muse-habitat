@@ -6,8 +6,8 @@ const CONFIG = {
 };
 
 const CATS = {
-  rl_win: "RL wins (reproducible)",
-  rl_loss: "Original wins (reproducible)",
+  rl_win: "RL wins (same result twice)",
+  rl_loss: "Original wins (same result twice)",
   noisy: "Mixed / run-to-run noise",
   all_success: "All models succeed",
   all_fail: "All models fail",
