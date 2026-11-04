@@ -71,6 +71,7 @@
 <section id="how">
   <div class="wrap">
     <h2>How it works</h2>
+    <div class="card" style="margin-bottom:16px"><h3>Practicing with a stand-in partner</h3><p>A robot can't practice thousands of chores with real people, so Glimmer practices with a simulated partner played by a copy of itself: self-play. The two agents plan separately, each from its own partial view, and have no way to message each other, so each has to work out who is doing what from what it observes. The reward is shared, so only teamwork pays. On a real robot, only the robot's side would ship; the partner is a training tool. The results on this page are for the whole team, with both agents running the adapter, and the partner was always simulated: working with real people is the next step.</p></div>
     <div class="how">
       <div class="card"><h3>The task</h3><p>PARTNR household tasks in Habitat 3.0: a Spot robot and a simulated human share a house and must, for example, move objects, fill a kettle, or turn on a lamp. Neither starts out knowing where things are.</p></div>
       <div class="card"><h3>The planner</h3><p>Muse Glimmer plans for both agents. Each turn it thinks, then calls one tool in its native tool-calling format (Explore, Navigate, Pick, Place, Rearrange, Open, Fill, PowerOn, Done, ...). PARTNR's built-in skills carry out the motion.</p></div>

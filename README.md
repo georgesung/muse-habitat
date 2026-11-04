@@ -58,6 +58,17 @@ set; the released adapter was chosen on a dev split of PARTNR train before its v
 
 About 30 hours of training in total; 4 restarts from saved adapter + optimizer state.
 
+## Why the model plays both the robot and the human
+
+A robot can't practice thousands of chores with real people, so Glimmer practices with a simulated partner played by a
+copy of itself: self-play. The two agents plan separately, each from its own partial view, and have no way to message
+each other. All either one sees is things like "book_0: held by the other agent", so each has to work out who is doing
+what. The reward is shared, so only teamwork pays. On a real robot, only the robot's side would ship; the partner is a
+training tool.
+
+The results above are for the whole team, with both agents running the adapter. We have not measured the robot's share
+on its own, and the partner was always simulated: working with real people is the next step.
+
 ## How it works
 
 ```
