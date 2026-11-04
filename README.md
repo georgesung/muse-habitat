@@ -105,3 +105,8 @@ curl -X POST localhost:8021/v1/load_lora_adapter -H 'Content-Type: application/j
 SPLIT=val scripts/dev_eval.sh val_p173 0,1 8021,8021 p173   # full val with the adapter
 python3 scripts/grpo_run.py <run name> --port 8021 ...      # training; see the script's arguments
 ```
+
+## License
+
+The code in this repository is licensed under Apache 2.0 (see `LICENSE`). Copyright 2026 Jou-ching (George) Sung.
+PARTNR, Habitat and Muse Glimmer keep their own licenses.
