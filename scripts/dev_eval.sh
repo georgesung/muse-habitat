@@ -3,7 +3,8 @@
 # (data/splits/dev.json: 300 episodes of the held-out train scenes) or its first <n>; with SPLIT=val, on val episodes
 # 0..<n>-1 (n=1000: full val). Episodes are dealt round-robin over the comma-separated <gpus> and <ports> (one
 # server per GPU's shards); logs runs/<name>_h<j>_s<k>, summary at the end. Each server must serve <model>.
-#   [SPLIT=val] scripts/dev_eval.sh <name> <gpus> <ports> <model> [shards per gpu] [n]
+# EPISODES (comma-separated indices into the split's episodes) replaces the default set; n is then their count.
+#   [SPLIT=val] [EPISODES=i,j,...] scripts/dev_eval.sh <name> <gpus> <ports> <model> [shards per gpu] [n]
 set -euo pipefail
 name=$1 shards=${5:-12}
 IFS=, read -ra gpus <<< "$2"
@@ -11,7 +12,9 @@ IFS=, read -ra ports <<< "$3"
 model=$4 split=${SPLIT:-dev}
 [ "$split" = val ] && n=${6:-1000} || n=${6:-300}
 root="$(cd "$(dirname "$0")/.." && pwd)"
-if [ "$split" = val ]; then
+if [ -n "${EPISODES:-}" ]; then
+    all=$EPISODES n=$(tr , '\n' <<< "$all" | wc -l)
+elif [ "$split" = val ]; then
     all=$(seq -s, 0 $((n - 1)))
 else
     all=$(python3 -c "import json; print(','.join(str(e[0]) for e in json.load(open('$root/data/splits/dev.json'))[:$n]))")
