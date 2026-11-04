@@ -11,7 +11,6 @@ const CATS = {
   noisy: "Mixed / run-to-run noise",
   all_success: "All models succeed",
   all_fail: "All models fail",
-  story: "Story",
 };
 const MODELS = { original: "Original Glimmer", rl: "Glimmer + RL", rl_longer: "RL, trained longer" };
 const PAGE = 50;
