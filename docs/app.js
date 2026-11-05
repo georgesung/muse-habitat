@@ -2,7 +2,7 @@
 const CONFIG = {
   REPO_URL: "https://github.com/georgesung/muse-habitat",
   HF_URL: "https://huggingface.co/georgesung/Muse-Glimmer-30B-Habitat-PARTNR-Lora",
-  DEMO_VIDEO_ID: "",   // YouTube video id of the 3-minute demo
+  DEMO_VIDEO_ID: "yy8IwvziNfA",   // YouTube video id of the 3-minute demo
 };
 
 const CATS = {

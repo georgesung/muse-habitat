@@ -1,13 +1,12 @@
 # Muse Glimmer + RL: an open model that plans better for a robot working alongside a person
 
+**[Project page](https://muse-habitat.georgesung.com/)** | **[Demo video](https://youtu.be/yy8IwvziNfA)** | **[LoRA adapter](https://huggingface.co/georgesung/Muse-Glimmer-30B-Habitat-PARTNR-Lora)**
+
 Home robots will have to plan in houses they have never seen, next to people who are doing their own share of the
 work. This project takes **Muse Glimmer 30B** (Meta open weights), makes it the planner for both agents in Meta's
 **PARTNR** benchmark (Habitat 3.0: a Spot robot and a simulated human rearrange, clean, fill and switch on objects in
 realistic homes from a natural-language task), and improves it with **reinforcement learning in simulation**: no human
 demonstrations or labels, only "did the task get done".
-
-**Project page (videos, explorer of all 1000 test episodes):** https://muse-habitat.georgesung.com/ ·
-**3-minute demo:** `<YouTube URL>` · **LoRA adapter:** https://huggingface.co/georgesung/Muse-Glimmer-30B-Habitat-PARTNR-Lora
 
 ## Results
 
