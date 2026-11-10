@@ -11,7 +11,8 @@ demonstrations or labels, only "did the task get done".
 ## Results
 
 PARTNR val: 1000 tasks in 12 houses that never appear in training (no public test split exists, so val is my test
-set; the released adapter was chosen on a dev split of PARTNR train before its val run).
+set; the released adapter was chosen on a dev split of PARTNR train before its val run, and one later checkpoint
+was also run on val; see "Training curves and checkpoints" below).
 
 | Planner | Success (of 1000) | Share of task conditions done | Episodes at the 20,000-step limit |
 |---|---|---|---|
@@ -89,6 +90,7 @@ job is the high-level plan: what to look for, where things go, who does what.
 | `scripts/dev_eval.sh` | greedy eval of a served model or adapter on dev or val |
 | `scripts/glimmer_serve_lora.sh` | vLLM serving: Glimmer + DFlash + LoRA adapters |
 | `scripts/traj_transcript.py`, `scripts/site_data.py` | readable per-turn transcripts; project page data |
+| `data/training_logs/`, `scripts/training_curves.py` | per-update and per-group training logs; the training curves figure |
 | `conf/` | Hydra configs on PARTNR's search path |
 | `docs/` | project page (GitHub Pages) and reports |
 | `tests/` | packing and GRPO tests |
@@ -106,22 +108,59 @@ SPLIT=val scripts/dev_eval.sh val_rl 0,1 8021,8021 glimmer-rl   # full val with 
 python3 scripts/grpo_run.py <run name> --port 8021 ...      # training; see the script's arguments
 ```
 
-## Details: how long to train, and the names `p173` / `p273`
+## Training curves and checkpoints
 
-Training saved numbered adapters as it went. Two were run on val, and the names only mean something side by side (you
-will see them in run directories): `p173` is the released adapter, the "+ RL" model everywhere above, and `p273` is
-the same run continued. The number is a step counter that leaves out the first 27 updates, so it is not the update count.
+![Rollout success and policy entropy over 300 GRPO updates](docs/assets/training_curves.png)
 
-| | `p173` (released) | `p273` |
+Training ran for 300 updates in 5 runs, each resumed from the previous run's adapter and optimizer state. Rollout
+success on the training tasks (top) rose from about 0.80 in the first 100 updates to 0.88 by updates 150–199, then
+became noisy; every rollout group is a different task, so read this as a trend only. Policy entropy (bottom) rose
+the whole way, and faster after 200 updates: about 0.22 at the start, 0.48 at 200 and 0.90 at 300 (mean of 10
+updates). The raw logs are in `data/training_logs/`, and `scripts/training_curves.py` redraws the figure.
+
+I evaluated four checkpoints with greedy decoding:
+
+| GRPO updates | Dev (300 tasks of PARTNR train) | Val (1000 tasks) |
 |---|---|---|
-| GRPO updates | 200 | 300 |
+| 0 (original Glimmer) | 246 | 782 |
+| 101 | 253 | – |
+| **200 (released)** | **255** | **810** |
+| 300 | 258 | 793 |
+
+Crashed episodes count as failures (1–3 per checkpoint on dev, up to 14 on val). On dev the checkpoints are within
+noise of each other (200 vs 300: 20 tasks better, 17 worse). I picked the 200-update adapter on dev and ran it on val
+once. Training then continued to 300 updates; that checkpoint scored a little higher on dev, so it was also run on
+val, where it scored lower, and I release the 200-update adapter. That last choice used val, so 810 is not a fully
+untouched test number. Had I released the 300-update adapter, the gain over the original would be 11 tasks instead
+of 28, and not significant (p = 0.41).
+
+More detail on the 300-update checkpoint:
+
+| | 200 updates (released) | 300 updates |
+|---|---|---|
 | Val success (of 1000) | 810 | 793 |
 | With re-runs averaged in | 820.5 | 799 |
 | Share of task conditions done | 0.893 | 0.876 |
 | Episodes at the 20,000-step limit | 109 | 99 |
 
-The extra 100 updates at the same settings drifted (policy entropy roughly tripled) and gave back most of the gain:
-after the re-run check `p273` is not better than the original (13 wins, 16 losses), so I release `p173`.
+The extra 100 updates at the same settings let entropy nearly double and gave back most of the gain: it finishes
+episodes sooner but fails more of them outright, and after the re-run check it is not better than the original
+(13 wins, 16 losses). Lowering the learning rate or adding an entropy or KL penalty is the obvious next try.
+
+**Names in run directories.** Training saved numbered adapters as it went: `p173` is the released adapter (200
+updates), and `p273` is the 300-update one. The number is a step counter that leaves out the first 27 updates, so
+it is not the update count.
+
+## Limitations
+
+- **Simulated partner only.** The model plays both agents, and every result is for that team. I have not measured
+  the robot's share on its own, or tested with real people.
+- **One greedy run per task.** Greedy decoding in this stack is not exactly reproducible, which is why I re-ran
+  the disagreements. Rollout success during training is at temperature 1 on different tasks each time.
+- **Idealized motion.** PARTNR's low-level skills are idealized (the base slides along the navigation mesh, grasps
+  snap), so this measures planning, not control.
+- **Short training.** About 30 hours and 300 updates with a single set of hyperparameters, and training drifted
+  after 200 updates.
 
 ## License
 

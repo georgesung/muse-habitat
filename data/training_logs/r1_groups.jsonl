@@ -1,0 +1,87 @@
+{"time": 374.30602526664734, "episode_id": "129143", "rollouts": 8, "rewards": [0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0], "policies": ["glimmer"], "trained": true}
+{"time": 929.8158705234528, "episode_id": "69087", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0], "policies": ["glimmer", "p1"], "trained": true}
+{"time": 1042.2835776805878, "episode_id": "63258", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["glimmer", "p1"], "trained": false}
+{"time": 1102.3763451576233, "episode_id": "83896", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["glimmer", "p1", "p2"], "trained": false}
+{"time": 1242.6023802757263, "episode_id": "39706", "rollouts": 8, "rewards": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "policies": ["glimmer", "p1", "p2"], "trained": false}
+{"time": 1302.69171667099, "episode_id": "47347", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["glimmer", "p1", "p2"], "trained": false}
+{"time": 1402.875678062439, "episode_id": "66544", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["glimmer", "p1", "p2"], "trained": false}
+{"time": 1923.7846200466156, "episode_id": "6653", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["glimmer", "p1", "p2"], "trained": false}
+{"time": 2104.18394446373, "episode_id": "79603", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["glimmer", "p1", "p2"], "trained": false}
+{"time": 2104.1841332912445, "episode_id": "99772", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["glimmer", "p1", "p2"], "trained": false}
+{"time": 2204.780113220215, "episode_id": "21950", "rollouts": 8, "rewards": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "policies": ["p1", "p2"], "trained": false}
+{"time": 2565.291970729828, "episode_id": "78105", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0], "policies": ["glimmer", "p1", "p2"], "trained": true}
+{"time": 2779.434273481369, "episode_id": "58788", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["glimmer", "p1", "p2"], "trained": false}
+{"time": 2819.522629261017, "episode_id": "82783", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0], "policies": ["p2", "p3"], "trained": true}
+{"time": 2950.8392713069916, "episode_id": "128769", "rollouts": 8, "rewards": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "policies": ["p1", "p2", "p3"], "trained": false}
+{"time": 3231.253334760666, "episode_id": "22015", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0], "policies": ["p2", "p3", "p4"], "trained": true}
+{"time": 3443.1082675457, "episode_id": "38504", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p2", "p3", "p4", "p5"], "trained": false}
+{"time": 3783.6048860549927, "episode_id": "33894", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p1", "p2", "p3", "p4", "p5"], "trained": false}
+{"time": 3883.8723437786102, "episode_id": "43028", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p2", "p4", "p5"], "trained": false}
+{"time": 3963.9743871688843, "episode_id": "14271", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p2", "p4", "p5"], "trained": false}
+{"time": 4084.1414511203766, "episode_id": "105469", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p2", "p3", "p4", "p5"], "trained": false}
+{"time": 4124.216239929199, "episode_id": "87442", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p2", "p4", "p5"], "trained": false}
+{"time": 4224.378383159637, "episode_id": "23013", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p2", "p3", "p4", "p5"], "trained": false}
+{"time": 4224.378620386124, "episode_id": "119692", "rollouts": 8, "rewards": [1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0], "policies": ["p2", "p4", "p5"], "trained": true}
+{"time": 4384.382470607758, "episode_id": "102810", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p2", "p3", "p4", "p5"], "trained": false}
+{"time": 4564.63400554657, "episode_id": "123544", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p2", "p3", "p4", "p5", "p6"], "trained": false}
+{"time": 4624.712368011475, "episode_id": "14867", "rollouts": 8, "rewards": [0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0], "policies": ["p2", "p3", "p4", "p5", "p6"], "trained": true}
+{"time": 5061.12583565712, "episode_id": "53779", "rollouts": 8, "rewards": [0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0], "policies": ["p2", "p3", "p4", "p5", "p6", "p7"], "trained": true}
+{"time": 5262.092599391937, "episode_id": "15136", "rollouts": 8, "rewards": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "policies": ["p4", "p5", "p6", "p7"], "trained": false}
+{"time": 5262.092716693878, "episode_id": "48416", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p2", "p3", "p4", "p5", "p6", "p7"], "trained": false}
+{"time": 5262.092773914337, "episode_id": "11269", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p2", "p3", "p5", "p6", "p7"], "trained": false}
+{"time": 5262.092904806137, "episode_id": "116399", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0], "policies": ["p2", "p3", "p4", "p5", "p6", "p7"], "trained": true}
+{"time": 5381.886185407639, "episode_id": "77391", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p2", "p3", "p4", "p5", "p6", "p7", "p8"], "trained": false}
+{"time": 5562.156426668167, "episode_id": "58056", "rollouts": 8, "rewards": [1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p2", "p3", "p4", "p5", "p6", "p7", "p8", "p9"], "trained": true}
+{"time": 5791.142938137054, "episode_id": "49417", "rollouts": 8, "rewards": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "policies": ["p10", "p4", "p5", "p6", "p7", "p8", "p9"], "trained": false}
+{"time": 5951.456827878952, "episode_id": "31327", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p10", "p5", "p6", "p7", "p8", "p9"], "trained": false}
+{"time": 6111.736961841583, "episode_id": "72626", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p10", "p6", "p7", "p8", "p9"], "trained": false}
+{"time": 6171.858916521072, "episode_id": "104257", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0], "policies": ["p10", "p4", "p5", "p6", "p7", "p8", "p9"], "trained": true}
+{"time": 6878.202097892761, "episode_id": "9655", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p10", "p11", "p6", "p7", "p8", "p9"], "trained": false}
+{"time": 6898.258628845215, "episode_id": "14047", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p10", "p11", "p7", "p8", "p9"], "trained": false}
+{"time": 7158.678636550903, "episode_id": "120463", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p10", "p11", "p7", "p8", "p9"], "trained": true}
+{"time": 7321.383036375046, "episode_id": "159", "rollouts": 8, "rewards": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "policies": ["p10", "p11", "p8", "p9"], "trained": false}
+{"time": 7521.7016723155975, "episode_id": "54304", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p10", "p11", "p12", "p9"], "trained": false}
+{"time": 7942.486655473709, "episode_id": "90794", "rollouts": 8, "rewards": [0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p10", "p11", "p12", "p5", "p6", "p7", "p8", "p9"], "trained": true}
+{"time": 8093.3869116306305, "episode_id": "52873", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p10", "p11", "p12"], "trained": false}
+{"time": 8193.543356895447, "episode_id": "29365", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p10", "p11", "p12", "p13"], "trained": false}
+{"time": 8353.822038173676, "episode_id": "85572", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p10", "p11", "p12", "p13", "p6", "p8", "p9"], "trained": false}
+{"time": 8474.07237792015, "episode_id": "36826", "rollouts": 8, "rewards": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "policies": ["p11", "p12", "p13"], "trained": false}
+{"time": 8754.576093196869, "episode_id": "73476", "rollouts": 8, "rewards": [1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0], "policies": ["p11", "p12", "p13"], "trained": true}
+{"time": 8889.481401205063, "episode_id": "50034", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p11", "p12", "p13"], "trained": false}
+{"time": 9049.778898000717, "episode_id": "90146", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p10", "p11", "p12", "p13", "p14", "p6", "p7", "p8", "p9"], "trained": false}
+{"time": 9069.857713460922, "episode_id": "94158", "rollouts": 8, "rewards": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "policies": ["p10", "p11", "p12", "p13", "p14", "p2", "p3", "p4", "p5", "p6", "p7", "p8", "p9"], "trained": false}
+{"time": 9290.237721443176, "episode_id": "71248", "rollouts": 8, "rewards": [0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0], "policies": ["p10", "p11", "p12", "p14", "p7", "p8", "p9"], "trained": true}
+{"time": 9509.561898946762, "episode_id": "121940", "rollouts": 1, "rewards": [1.0], "policies": ["p12"], "trained": false}
+{"time": 9509.562451601028, "episode_id": "113942", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0], "policies": ["p10", "p11", "p12", "p13", "p14"], "trained": true}
+{"time": 9509.562607765198, "episode_id": "104414", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p10", "p11", "p12", "p13", "p14"], "trained": true}
+{"time": 9823.623827695847, "episode_id": "16293", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p11", "p12", "p13", "p14", "p15", "p16"], "trained": false}
+{"time": 9823.624094963074, "episode_id": "109021", "rollouts": 8, "rewards": [0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p10", "p11", "p12", "p13", "p14", "p15", "p16", "p8", "p9"], "trained": true}
+{"time": 9989.408705949783, "episode_id": "44843", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p12", "p13", "p14", "p16", "p17", "p18"], "trained": false}
+{"time": 10149.749025344849, "episode_id": "78162", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p10", "p11", "p12", "p13", "p16", "p17", "p18", "p9"], "trained": false}
+{"time": 10390.141548395157, "episode_id": "37589", "rollouts": 8, "rewards": [0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0], "policies": ["p10", "p11", "p12", "p13", "p14", "p15", "p16", "p17", "p18"], "trained": true}
+{"time": 10655.105024576187, "episode_id": "119438", "rollouts": 8, "rewards": [0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0], "policies": ["p11", "p12", "p13", "p14", "p15", "p16", "p18"], "trained": true}
+{"time": 10655.10521030426, "episode_id": "97127", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p11", "p12", "p13", "p14", "p16", "p17", "p18"], "trained": false}
+{"time": 10655.105306625366, "episode_id": "39935", "rollouts": 8, "rewards": [0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0], "policies": ["p10", "p11", "p12", "p13", "p14", "p18"], "trained": true}
+{"time": 10779.619620323181, "episode_id": "22394", "rollouts": 8, "rewards": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "policies": ["p11", "p12", "p14", "p15", "p17", "p18", "p19"], "trained": false}
+{"time": 10779.619819641113, "episode_id": "2169", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p11", "p12", "p13", "p14", "p18", "p19"], "trained": false}
+{"time": 10994.320421218872, "episode_id": "13743", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p12", "p14", "p15", "p16", "p17", "p18", "p19", "p20"], "trained": false}
+{"time": 11174.778360843658, "episode_id": "83345", "rollouts": 8, "rewards": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "policies": ["p12", "p13", "p14", "p15", "p16", "p17", "p18", "p19", "p20", "p21"], "trained": false}
+{"time": 11194.863554000854, "episode_id": "89928", "rollouts": 8, "rewards": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "policies": ["p12", "p13", "p14", "p15", "p16", "p17", "p18", "p19", "p20", "p21"], "trained": false}
+{"time": 11355.246539831161, "episode_id": "47062", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p13", "p16", "p17", "p18", "p20", "p21"], "trained": true}
+{"time": 11491.060631752014, "episode_id": "31137", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p14", "p15", "p16", "p17", "p18", "p19", "p20", "p21"], "trained": false}
+{"time": 11511.124764919281, "episode_id": "119902", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0], "policies": ["p13", "p17", "p18", "p21", "p22"], "trained": true}
+{"time": 11679.950487852097, "episode_id": "100470", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p14", "p15", "p16", "p17", "p18", "p19", "p20", "p21", "p22"], "trained": false}
+{"time": 11720.099163293839, "episode_id": "54238", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p13", "p18", "p19", "p21", "p22", "p23"], "trained": false}
+{"time": 11800.26757645607, "episode_id": "65505", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0], "policies": ["p11", "p12", "p13", "p14", "p15", "p16", "p17", "p18", "p19", "p20", "p21", "p22", "p23"], "trained": true}
+{"time": 12047.766020059586, "episode_id": "103017", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p13", "p14", "p15", "p18", "p19", "p21", "p22", "p23"], "trained": false}
+{"time": 12047.766273021698, "episode_id": "44360", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0], "policies": ["p13", "p14", "p15", "p16", "p18", "p19", "p20", "p21", "p22", "p23"], "trained": true}
+{"time": 12200.847148895264, "episode_id": "106638", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0], "policies": ["p11", "p13", "p14", "p16", "p17", "p18", "p23", "p24"], "trained": true}
+{"time": 12393.96737074852, "episode_id": "13805", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p14", "p15", "p17", "p18", "p19", "p20", "p21", "p22", "p23", "p24", "p25", "p26"], "trained": false}
+{"time": 12574.330851078033, "episode_id": "80894", "rollouts": 1, "rewards": [1.0], "policies": ["p18", "p19", "p20"], "trained": false}
+{"time": 12574.331429719925, "episode_id": "123606", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0], "policies": ["p11", "p12", "p13", "p14", "p15", "p16", "p17", "p18", "p19", "p20", "p21", "p22", "p25", "p26"], "trained": true}
+{"time": 12753.201903104782, "episode_id": "9754", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p12", "p13", "p14", "p15", "p18", "p21", "p22", "p23", "p24", "p25", "p26", "p27"], "trained": false}
+{"time": 12933.545622825623, "episode_id": "101925", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p14", "p16", "p17", "p18", "p19", "p20", "p21", "p23", "p24", "p25", "p26", "p27"], "trained": false}
+{"time": 12993.687352180481, "episode_id": "49550", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p15", "p18", "p19", "p20", "p21", "p22", "p23", "p26", "p27"], "trained": false}
+{"time": 13013.757486104965, "episode_id": "34362", "rollouts": 8, "rewards": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "policies": ["p12", "p13", "p14", "p15", "p16", "p17", "p18", "p19", "p20", "p21", "p22", "p23", "p24", "p25", "p26", "p27"], "trained": false}
+{"time": 13314.415071487427, "episode_id": "89175", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "policies": ["p12", "p13", "p14", "p18", "p23", "p24", "p25", "p26", "p27"], "trained": false}
+{"time": 13374.597516059875, "episode_id": "44733", "rollouts": 8, "rewards": [1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0], "policies": ["p15", "p16", "p17", "p18", "p20", "p21", "p22", "p23", "p24", "p25", "p26", "p27"], "trained": true}
