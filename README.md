@@ -1,6 +1,6 @@
 # Muse Glimmer + RL: an open model that plans better for a robot working alongside a person
 
-**[Project page](https://muse-habitat.georgesung.com/)** | **[Demo video](https://youtu.be/yy8IwvziNfA)** | **[LoRA adapter](https://huggingface.co/georgesung/Muse-Glimmer-30B-Habitat-PARTNR-Lora)**
+**[Project page](https://muse-habitat.georgesung.com/)** | **[Demo video](https://youtu.be/yy8IwvziNfA)** | **[LoRA adapter](https://huggingface.co/georgesung/Muse-Glimmer-30B-Habitat-PARTNR-Lora)** | **[Engineering details](docs/engineering.md)**
 
 Home robots will have to plan in houses they have never seen, next to people who are doing their own share of the
 work. This project takes **Muse Glimmer 30B** (Meta open weights), makes it the planner for both agents in Meta's
@@ -58,6 +58,10 @@ was also run on val; see "Training curves and checkpoints" below).
 
 About 30 hours of training in total; 4 restarts from saved adapter + optimizer state.
 
+**[Engineering details](docs/engineering.md)** covers all of this in depth: the trainer (written on PyTorch, PEFT and
+transformers; no TRL), the packing layout and its Triton attention kernel, log-probs without the full logits,
+serving LoRA with speculative decoding, the bf16 numerics study, and the checks behind each part.
+
 ## Why the model plays both the robot and the human
 
 A robot can't practice thousands of chores with real people, so Glimmer practices with a simulated partner played by a
@@ -92,7 +96,7 @@ job is the high-level plan: what to look for, where things go, who does what.
 | `scripts/traj_transcript.py`, `scripts/site_data.py` | readable per-turn transcripts; project page data |
 | `data/training_logs/`, `scripts/training_curves.py` | per-update and per-group training logs; the training curves figure |
 | `conf/` | Hydra configs on PARTNR's search path |
-| `docs/` | project page (GitHub Pages) and reports |
+| `docs/` | project page (GitHub Pages), [engineering details](docs/engineering.md) and reports |
 | `tests/` | packing and GRPO tests |
 
 ## Running it

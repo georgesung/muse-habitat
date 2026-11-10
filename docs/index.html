@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Muse Glimmer + RL</title>
 <meta name="description" content="Reinforcement learning in simulation makes Muse Glimmer a better planner for a robot working alongside a person, in houses it has never seen.">
-<link rel="stylesheet" href="style.css?v=2">
+<link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 <header class="top">
@@ -17,6 +17,7 @@
       <a href="#videos">Videos</a>
       <a href="#explorer">Explore all 1000 tasks</a>
       <a href="#notes">Notes</a>
+      <a href="engineering.html">Engineering details</a>
     </nav>
   </div>
 </header>
@@ -82,7 +83,7 @@
     </div>
     <h3 style="margin-top:28px">Training curves</h3>
     <img class="figure" src="assets/training_curves.png" alt="Two charts over 300 GRPO updates: rollout success on training tasks rises from about 0.80 to 0.88 by updates 150 to 199, then turns noisy; policy entropy rises the whole way, from 0.22 to 0.48 at 200 updates (the released adapter) and 0.90 at 300" loading="lazy">
-    <p class="note">Rollout success on the training tasks (top) rose from about 0.80 to 0.88 by updates 150&ndash;199, then turned noisy; each rollout group is a different task, so read it as a trend. Policy entropy (bottom) rose the whole way, faster after 200 updates. I release the adapter at 200 updates (dashed line): the one at 300 scored a little higher on the dev split but lower on val (793 vs 810), so that choice used val. Raw logs and the plotting script are in the repo.</p>
+    <p class="note">Rollout success on the training tasks (top) rose from about 0.80 to 0.88 by updates 150&ndash;199, then turned noisy; each rollout group is a different task, so read it as a trend. Policy entropy (bottom) rose the whole way, faster after 200 updates. I release the adapter at 200 updates (dashed line): the one at 300 scored a little higher on the dev split but lower on val (793 vs 810), so that choice used val. Raw logs and the plotting script are in the repo. The trainer, packing, attention kernel and serving are described in <a href="engineering.html">Engineering details</a>.</p>
     <p class="note">Everything here was built during the hackathon (Oct 29 &ndash; Nov 4, 2026): Muse Glimmer as a native-tool-calling PARTNR planner (the 782 / 1000 baseline), the RL pipeline (rollouts, GRPO trainer, turn packing, live adapter serving), the training runs, and the evaluations on this page.</p>
   </div>
 </section>
