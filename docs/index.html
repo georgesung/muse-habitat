@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Muse Glimmer + RL</title>
 <meta name="description" content="Reinforcement learning in simulation makes Muse Glimmer a better planner for a robot working alongside a person, in houses it has never seen.">
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 <header class="top">
@@ -17,6 +17,7 @@
       <a href="#videos">Videos</a>
       <a href="#explorer">Explore all 1000 tasks</a>
       <a href="#notes">Notes</a>
+      <a href="environment.html">Actions and observations</a>
       <a href="engineering.html">Engineering details</a>
     </nav>
   </div>
@@ -77,7 +78,7 @@
     <div class="card" style="margin-bottom:16px"><h3>Practicing with a stand-in partner</h3><p>A robot can't practice thousands of chores with real people, so Glimmer practices with a simulated partner played by a copy of itself: self-play. The two agents plan separately, each from its own partial view, and have no way to message each other, so each has to work out who is doing what from what it observes. The reward is shared, so only teamwork pays. On a real robot, only the robot's side would ship; the partner is a training tool. The results on this page are for the whole team, with both agents running the adapter, and the partner was always simulated: working with real people is the next step.</p></div>
     <div class="how">
       <div class="card"><h3>The task</h3><p>PARTNR household tasks in Habitat 3.0: a Spot robot and a simulated human share a house and must, for example, move objects, fill a kettle, or turn on a lamp. Neither starts out knowing where things are.</p></div>
-      <div class="card"><h3>The planner</h3><p>Muse Glimmer plans for both agents. Each turn it thinks, then calls one tool in its native tool-calling format (Explore, Navigate, Pick, Place, Rearrange, Open, Fill, PowerOn, Done, ...). PARTNR's built-in skills carry out the motion.</p></div>
+      <div class="card"><h3>The planner</h3><p>Muse Glimmer plans for both agents. Each turn it thinks, then calls one tool in its native tool-calling format (Explore, Navigate, Pick, Place, Rearrange, Open, Fill, PowerOn, Done, ...). PARTNR's built-in skills carry out the motion. <a href="environment.html">Actions and observations</a> lists every skill and what the model sees, with example episodes.</p></div>
       <div class="card"><h3>The learning</h3><p>GRPO with a LoRA adapter: each training task is played 8 times at temperature 1; the reward is task success, shared by both agents; attempts that beat the group average are reinforced. 34 training houses; checkpoints chosen on 3 held-out houses.</p></div>
       <div class="card"><h3>The system</h3><p>Rollouts run in Habitat on one machine while vLLM serves Glimmer with the current adapter (and speculative decoding with Glimmer's assistant model) on another; each new adapter is loaded live. A whole episode's turns train as one packed sequence, 12.7x cheaper than one sequence per turn.</p></div>
     </div>

@@ -157,3 +157,4 @@ header.top nav a[aria-current="page"] { color: var(--text); font-weight: 600; }
   .toc summary { margin-bottom: 0; }
   .toc details[open] summary { margin-bottom: 8px; }
 }
+.doc blockquote { margin: 16px 0; padding: 4px 16px; border-left: 3px solid var(--border); color: var(--muted); }

@@ -1,6 +1,6 @@
 # Muse Glimmer + RL: an open model that plans better for a robot working alongside a person
 
-**[Project page](https://muse-habitat.georgesung.com/)** | **[Demo video](https://youtu.be/yy8IwvziNfA)** | **[LoRA adapter](https://huggingface.co/georgesung/Muse-Glimmer-30B-Habitat-PARTNR-Lora)** | **[Engineering details](docs/engineering.md)**
+**[Project page](https://muse-habitat.georgesung.com/)** | **[Demo video](https://youtu.be/yy8IwvziNfA)** | **[LoRA adapter](https://huggingface.co/georgesung/Muse-Glimmer-30B-Habitat-PARTNR-Lora)** | **[Actions and observations](docs/environment.md)** | **[Engineering details](docs/engineering.md)**
 
 Home robots will have to plan in houses they have never seen, next to people who are doing their own share of the
 work. This project takes **Muse Glimmer 30B** (Meta open weights), makes it the planner for both agents in Meta's
@@ -96,7 +96,7 @@ job is the high-level plan: what to look for, where things go, who does what.
 | `scripts/traj_transcript.py`, `scripts/site_data.py` | readable per-turn transcripts; project page data |
 | `data/training_logs/`, `scripts/training_curves.py` | per-update and per-group training logs; the training curves figure |
 | `conf/` | Hydra configs on PARTNR's search path |
-| `docs/` | project page (GitHub Pages), [engineering details](docs/engineering.md) and reports |
+| `docs/` | project page (GitHub Pages), [actions and observations](docs/environment.md), [engineering details](docs/engineering.md) and reports |
 | `tests/` | packing and GRPO tests |
 
 ## Running it
