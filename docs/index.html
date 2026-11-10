@@ -80,6 +80,9 @@
       <div class="card"><h3>The learning</h3><p>GRPO with a LoRA adapter: each training task is played 8 times at temperature 1; the reward is task success, shared by both agents; attempts that beat the group average are reinforced. 34 training houses; checkpoints chosen on 3 held-out houses.</p></div>
       <div class="card"><h3>The system</h3><p>Rollouts run in Habitat on one machine while vLLM serves Glimmer with the current adapter (and speculative decoding with Glimmer's assistant model) on another; each new adapter is loaded live. A whole episode's turns train as one packed sequence, 12.7x cheaper than one sequence per turn.</p></div>
     </div>
+    <h3 style="margin-top:28px">Training curves</h3>
+    <img class="figure" src="assets/training_curves.png" alt="Two charts over 300 GRPO updates: rollout success on training tasks rises from about 0.80 to 0.88 by updates 150 to 199, then turns noisy; policy entropy rises the whole way, from 0.22 to 0.48 at 200 updates (the released adapter) and 0.90 at 300" loading="lazy">
+    <p class="note">Rollout success on the training tasks (top) rose from about 0.80 to 0.88 by updates 150&ndash;199, then turned noisy; each rollout group is a different task, so read it as a trend. Policy entropy (bottom) rose the whole way, faster after 200 updates. I release the adapter at 200 updates (dashed line): the one at 300 scored a little higher on the dev split but lower on val (793 vs 810), so that choice used val. Raw logs and the plotting script are in the repo.</p>
     <p class="note">Everything here was built during the hackathon (Oct 29 &ndash; Nov 4, 2026): Muse Glimmer as a native-tool-calling PARTNR planner (the 782 / 1000 baseline), the RL pipeline (rollouts, GRPO trainer, turn packing, live adapter serving), the training runs, and the evaluations on this page.</p>
   </div>
 </section>
