@@ -1,6 +1,6 @@
 # Engineering details
 
-How the RL pipeline behind Muse Glimmer + RL works: the planner interface, the streaming GRPO loop, the training
+How the RL pipeline behind Muse Glimmer Embodied RL works: the planner interface, the streaming GRPO loop, the training
 loss, prefix-shared packing and its attention kernel, serving LoRA adapters with speculative decoding, and the checks
 that each part does what it should. For results, see the [README](https://github.com/georgesung/muse-habitat#readme)
 and the [project page](https://muse-habitat.georgesung.com/).

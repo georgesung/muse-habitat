@@ -1,4 +1,4 @@
-# Muse Glimmer + RL: an open model that plans better for a robot working alongside a person
+# Muse Glimmer Embodied RL: an open model that plans better for a robot working alongside a person
 
 **[Project page](https://muse-habitat.georgesung.com/)** | **[Demo video](https://youtu.be/yy8IwvziNfA)** | **[LoRA adapter](https://huggingface.co/georgesung/Muse-Glimmer-30B-Habitat-PARTNR-Lora)** | **[Actions and observations](docs/environment.md)** | **[Engineering details](docs/engineering.md)**
 
