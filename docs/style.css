@@ -126,6 +126,12 @@ footer { padding: 28px 0 40px; color: var(--muted); font-size: 14px; }
 
 /* Engineering details page */
 header.top a.brand { color: var(--text); text-decoration: none; }
+nav.onpage { position: sticky; top: 0; z-index: 10; background: var(--bg); border-bottom: 1px solid var(--border); }
+nav.onpage .wrap { display: flex; gap: 18px; overflow-x: auto; white-space: nowrap; padding-top: 9px; padding-bottom: 9px; font-size: 14px; scrollbar-width: none; }
+nav.onpage a { color: var(--muted); text-decoration: none; }
+nav.onpage a:hover, nav.onpage a.active { color: var(--text); }
+nav.onpage a.active { font-weight: 600; }
+main section, #results { scroll-margin-top: 48px; }
 header.top nav a[aria-current="page"] { color: var(--text); font-weight: 600; }
 .doc-layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 40px; padding-top: 32px; padding-bottom: 64px; }
 .toc { position: sticky; top: 16px; align-self: start; max-height: calc(100vh - 32px); overflow-y: auto; font-size: 14px; }

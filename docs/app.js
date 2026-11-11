@@ -214,3 +214,16 @@ async function main() {
 }
 
 main();
+
+// Highlight the section being read in the on-page contents strip.
+(function () {
+  const links = [...document.querySelectorAll("nav.onpage a")];
+  const heads = links.map((a) => document.getElementById(a.getAttribute("href").slice(1)));
+  const onScroll = () => {
+    let cur = -1;
+    heads.forEach((h, i) => { if (h && h.getBoundingClientRect().top < 120) cur = i; });
+    links.forEach((a, i) => a.classList.toggle("active", i === cur));
+  };
+  document.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+})();
