@@ -8,6 +8,8 @@ work. This project takes **Muse Glimmer 30B** (Meta open weights), makes it the 
 realistic homes from a natural-language task), and improves it with **reinforcement learning in simulation**: no human
 demonstrations or labels, only "did the task get done".
 
+I first built this for the [Meta Global AI Developer Hackathon](https://dev.meta.ai/events/global-hackathon) (Oct 29 – Nov 4, 2026).
+
 ## Results
 
 PARTNR val: 1000 tasks in 12 houses that never appear in training (no public test split exists, so val is my test
@@ -30,7 +32,7 @@ was also run on val; see "Training curves and checkpoints" below).
 
 ![Headline results](docs/assets/headline_chart.png)
 
-## What I built (all during the hackathon, Oct 29 – Nov 4, 2026)
+## What I built
 
 1. **Glimmer as a native PARTNR planner** (`src/muse_habitat/native_tools.py`, `vllm_llm.py`): PARTNR's skills
    (navigate, explore, pick, place, rearrange, clean, fill, power on/off, ...) exposed as Glimmer tools. Each turn the

@@ -5,9 +5,9 @@ loss, prefix-shared packing and its attention kernel, serving LoRA adapters with
 that each part does what it should. For results, see the [README](https://github.com/georgesung/muse-habitat#readme)
 and the [project page](https://muse-habitat.georgesung.com/).
 
-All of this was written during the hackathon (Oct 29 – Nov 4, 2026). Packing the turns of a multi-turn episode so the
-shared history is computed once is a known idea from public work; the implementation here (the range computation,
-the Triton kernel, the log-prob path and the training integration) was written for this project.
+Packing the turns of a multi-turn episode so the shared history is computed once is a known idea from public work;
+the implementation here (the range computation, the Triton kernel, the log-prob path and the training integration)
+was written for this project.
 
 ## Overview
 
