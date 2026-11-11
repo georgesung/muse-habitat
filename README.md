@@ -8,7 +8,7 @@ work. This project takes **Muse Glimmer 30B** (Meta open weights), makes it the 
 realistic homes from a natural-language task), and improves it with **reinforcement learning in simulation**: no human
 demonstrations or labels, only "did the task get done".
 
-I first built this for the [Meta Global AI Developer Hackathon](https://dev.meta.ai/events/global-hackathon) (Oct 29 – Nov 4, 2026).
+Initially built for the [Meta Global AI Developer Hackathon](https://dev.meta.ai/events/global-hackathon) (Oct 29 – Nov 4, 2026).
 
 ## Results
 
