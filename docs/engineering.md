@@ -119,7 +119,8 @@ A_i = (r_i - mean(r)) / (std(r) + 1e-6)
 
 and every generated token of both agents in that rollout gets *A*ᵢ. Only the model's own tokens (reasoning and call)
 are trained; prompts and tool results are context only, but gradients still flow through the whole context. The loss
-is the standard clipped policy-gradient objective, with the ratio against the logged sampling log-probs:
+is the clipped policy-gradient objective of [PPO](https://arxiv.org/abs/1707.06347), as used by
+[GRPO](https://arxiv.org/abs/2402.03300), with the ratio against the logged sampling log-probs:
 
 ```
 ratio = exp(logp_current - logp_sampled)
@@ -127,8 +128,9 @@ loss  = -sum over tokens of min(ratio * A, clip(ratio, 1 - 0.2, 1 + 0.28) * A)  
 ```
 
 - The clip range is asymmetric (0.2 below, 0.28 above), so tokens with positive advantage can gain probability a
-  little faster than the usual symmetric range allows.
-- The loss is averaged per token over the whole update, so long episodes are not down-weighted per token.
+  little faster than the usual symmetric range allows. This is [DAPO](https://arxiv.org/abs/2503.14476)'s "clip-higher".
+- The loss is averaged per token over the whole update, so long episodes are not down-weighted per token (also
+  from DAPO).
 - There is no KL penalty and no reference model. That saves a second copy of the model and a forward pass per pack.
   In hindsight the drift after 200 updates suggests a KL or entropy term would have helped; see the
   [training curves](https://github.com/georgesung/muse-habitat#training-curves-and-checkpoints).

@@ -166,6 +166,22 @@ it is not the update count.
 - **Short training.** About 30 hours and 300 updates with a single set of hyperparameters, and training drifted
   after 200 updates.
 
+## References
+
+- PARTNR: Chang et al., "PARTNR: A Benchmark for Planning and Reasoning in Embodied Multi-agent Tasks", 2024.
+  [arXiv:2411.00081](https://arxiv.org/abs/2411.00081)
+- Habitat 3.0: Puig et al., "Habitat 3.0: A Co-Habitat for Humans, Avatars and Robots", 2023.
+  [arXiv:2310.13724](https://arxiv.org/abs/2310.13724)
+- GRPO: Shao et al., "DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models", 2024.
+  [arXiv:2402.03300](https://arxiv.org/abs/2402.03300)
+- DAPO: Yu et al., "DAPO: An Open-Source LLM Reinforcement Learning System at Scale", 2025.
+  [arXiv:2503.14476](https://arxiv.org/abs/2503.14476). The asymmetric clip range and the per-token loss
+  average come from here.
+- PPO: Schulman et al., "Proximal Policy Optimization Algorithms", 2017.
+  [arXiv:1707.06347](https://arxiv.org/abs/1707.06347)
+- ReAct: Yao et al., "ReAct: Synergizing Reasoning and Acting in Language Models", 2022.
+  [arXiv:2210.03629](https://arxiv.org/abs/2210.03629)
+
 ## License
 
 The code in this repository is licensed under Apache 2.0 (see `LICENSE`). Copyright 2026 Jou-ching (George) Sung.
